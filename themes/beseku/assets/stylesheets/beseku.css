@@ -1,0 +1,292 @@
+
+
+/* Overall definitions ============================================== */
+
+body
+{
+  background: #DDD;
+  width: 700px;
+  font-family: verdana, lucida, arial, sans-serif;
+  font-size: 10px;
+  color: #FFF;	
+  margin: 0;
+  padding: 0;
+}
+
+/* Text definitions =============================================== */
+
+p
+{
+  padding: 05px 20px 05px 20px;
+  margin: 0;
+}
+
+a
+{
+  background: transparent;
+  color: #CCCC00;
+  text-decoration: none;
+}
+
+a:hover
+{
+  background: transparent;
+  color: #FFF;
+  text-decoration: none;
+}
+
+a:visited
+{
+  background: transparent;
+  color: #DDD;
+  text-decoration: line-through;	
+}
+
+acronym
+{
+  cursor: help;	
+}
+
+/* Page definitions =============================================== */
+
+#centre
+{
+  background: transparent;	
+  top: 20px;
+  left: 50%;
+  position: absolute;
+}
+
+#page
+{
+  background: transparent;
+  width: 632px;
+  top: 0;
+  left: -316px;
+  position: absolute;
+  border-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#header, #body, #footer
+{
+  background: transparent;
+  width: 632px;
+  float: left;
+  border-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#header
+{
+  background-image: url(../images/border-top.gif); 
+  background-repeat: no-repeat;	
+  height: 17px;
+  float:left;
+}
+
+#footer
+{
+  background-image: url(../images/border-bottom.gif); 
+  background-repeat: no-repeat;	
+  height: 30px;
+  float:left;
+}
+
+#body
+{
+  background-image: url(../images/border-side.gif); 
+  background-repeat: repeat-y;	
+  float:left;
+  margin: 0;
+  padding: 0 0 0 20px;	
+}
+
+
+
+/* Content definitions =============================================== */
+
+#content-empty, #content-logo, #content-photo, #content-toc, #content-project, #content-intro
+{
+  background: #666;
+  width: 600px;
+  float: left;
+  border-style: solid;
+  border-color: #EEE;
+  border-width: 0 0 01px 0;
+  margin: 0 ;
+  padding: 0;	
+}
+
+
+#content-empty
+{
+  height: 20px;
+}
+
+#content-project
+{
+  border-style: none;	
+}
+
+#content-project .left img
+{
+  margin: 03px 0 0 15px;	
+}
+
+#content-project .right img
+{
+  margin: 05px 0 0 10px;	
+}
+
+#content-photo
+{
+  background-image: url(../images/content-bg1.jpg); 
+  background-repeat: no-repeat;
+  height: 225px;
+}
+
+#content-logo
+{
+  width: 590px;
+  height: 60px;
+  padding: 05px;
+}
+
+#content-toc
+{
+  border-style: none;
+}	
+
+/* Headings and Image Replacement  ==================================== */
+
+#content-logo h1
+{
+  background-image: url(../images/logo.gif); 
+  background-repeat: no-repeat;	
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  font-size: 01px;
+  color: #666;
+}
+
+#content-project .left h2
+{
+  background-repeat: no-repeat;	
+  width: 240px;
+  height: 35px;
+  margin: 0 0 05px 15px;
+  padding: 0;
+  font-size: 01px;
+  color: #666;
+}
+
+/* Column definitions =============================================== */
+
+.left, .right
+{
+  background: transparent;
+  width: 295px;
+  float: left;
+  padding: 10px 0 10px 0;
+  margin: 0;
+}
+
+.right
+{
+  margin: 0 0 0 10px;
+}
+
+/* TOC definitions =============================================== */
+
+#content-toc table
+{
+  width: 100%;	
+}
+
+.title, .cat, .tech
+{	
+  background: transparent;
+  margin: 0;
+  border-style: solid;
+  border-color: #FFF;
+  border-width: 0 0 01px 0;
+}
+
+.title h2, .cat h2, .tech h2
+{
+  font-size: 01px;
+  color: #666;	
+}
+
+
+.title
+{
+  width: 300px;
+  padding: 05px 0 05px 21px;	
+}
+
+.title h2
+{
+  background-image: url(../images/title-toc1.gif); 	
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 17px;
+  margin: 0 0 0 -01px;
+  padding: 0;
+}
+
+.title a
+{
+  color: #FFF;	
+}
+
+.title a:hover
+{
+  color: #CCCC00;	
+}
+
+.title a:visited
+{
+  text-decoration: none;	
+}
+
+.cat
+{
+  width: 120px;
+  padding: 05px 0 05px 02px;
+}
+
+.cat h2
+{
+  background-image: url(../images/title-toc2.gif); 	
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 17px;
+  margin: 0;
+  padding: 0;
+}
+
+.tech
+{	
+  padding: 05px 0 05px 0px;
+}
+
+.tech h2
+{
+  background-image: url(../images/title-toc3.gif); 	
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 17px;
+  margin: 0;
+  padding: 0;
+}
+
+.tech acronym
+{
+  border-style: none;	
+}

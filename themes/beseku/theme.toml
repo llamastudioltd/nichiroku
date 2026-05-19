@@ -1,0 +1,12 @@
+name = "Beseku (06)"
+license = ""
+licenselink = ""
+description = ""
+homepage = ""
+tags = []
+features = []
+min_version = "0.79.0"
+
+[author]
+  name = "Ben Sekulowicz"
+  homepage = "https://beseku.com"
