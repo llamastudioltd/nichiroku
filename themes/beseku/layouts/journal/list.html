@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <div id="content">
+    {{ range .Pages }}
+      {{ partial "journal" . }}
+    {{ end }}
+  </div>
+  <div id="sub-content">
+    <h2>About the Author</h2>
+    <p>Ben Sekulowicz-Barclay is a graduate of the University of Surrey and currently works as a Web Developer/Information Architect in London, England.</p>
+    <p><a href="../about/" title="More about the author of beseku.com">More about the author...</a></p>		
+    
+    <h2>Somewhere Else</h2>
+    <ul>
+      <li><a href="#">Android 8 loves you.</a></li>
+      <li><a href="#">Matt Thomas</a></li>
+      <li><a href="#">Asthmatic Kitty Records : Sufjan Stevens</a></li>
+      <li><a href="#">SnatchEm Widget</a></li>
+      <li><a href="#">ONE DIGITAL</a></li>
+      <li><a href="#">Electric Pulp | An Interactive Agency</a></li>
+      <li><a href="#">JAMUNGO</a></li>
+      <li><a href="#">15 Best License-Free Pixel Fonts</a></li>
+      <li><a href="#">Pixel/LED fonts</a></li>
+      <li><a href="#">NID GALLERY</a></li>
+    </ul>
+    
+    <h2>Archives By Month</h2>
+    <ul>
+      <li><a href="#">April, 2005</a></li>
+      <li><a href="#">March, 2005</a></li>
+      <li><a href="#">February, 2005</a></li>
+      <li><a href="#">January, 2005</a></li>
+      <li><a href="#">December, 2004</a></li>
+      <li><a href="#">November, 2004</a></li>
+    </ul>
+      
+    <h2>Syndicate</h2>
+    <p>There are <acronym title="Really Simple Syndication">RSS</acronym> feeds available for the <a href="#" title="Beseku 7 Journal Feed">main journal</a>, (excerpts) and for the <a href="http://del.icio.us/rss/beseku" title="Beseku 7 Somewhere Else Feed">somewhere else</a> links.</p>
+  </div>
+{{ end }}

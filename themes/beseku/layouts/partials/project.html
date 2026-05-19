@@ -1,0 +1,7 @@
+<h2>{{ .Title }}</h2>
+
+{{ with (.Resources.GetMatch "screen*") }}
+<img src="{{ .RelPermalink }}" alt="Screenshot: {{ $.Title }}" title="{{ $.Summary }}" class="img-project"  />
+{{ end }}
+
+{{ .Content }}

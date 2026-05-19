@@ -1,0 +1,226 @@
+body
+{
+	font-family: georgia, verdana, arial, sans-serif;
+	font-size: 62.5%;
+	color: #444;
+}
+
+/* ===================================================================================== */
+
+h1
+{
+	background-color: transparent;
+	background-image: url("../images/logo.gif");
+	background-repeat: no-repeat;
+	width: 146px;
+	height: 43px;	
+	position: absolute;
+	top: 74px;
+	left: 48px;
+	text-indent: -9999px;
+}
+
+h2, h3, h4
+{
+	clear: left;
+}
+
+h2
+{
+	font-family: "helvetica neue bold condensed", arial, verdana, sans-serif;
+	color: #CD5050;
+	margin: 15px 0 10px 0;
+	padding: 0 10px;
+	font-size: 1.6em;	
+	text-transform: uppercase;
+}
+
+h3
+{
+	font-family: "helvetica neue bold condensed", arial, verdana, sans-serif;
+	color: #777;
+	margin: 15px 0;
+	padding: 0 10px;
+	font-size: 1.3em;
+	text-transform: uppercase;
+}
+
+h4
+{
+	margin: 0 0 15px 0;
+	padding: 0 10px;
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+
+p, label
+{
+	margin: 5px 0 15px 0;
+	padding: 0 10px;
+	font-size: 1.1em;
+	line-height: 1.5em;
+	text-align: left;
+}
+
+a
+{
+	color: #CD5050;
+}
+
+a:link
+{
+	color: #CD5050;
+	text-decoration: underline;
+}
+
+a:hover
+{	
+	text-decoration: none;
+}
+
+a:visited
+{
+	color: #999;
+	text-decoration: line-through;
+}
+
+h2 a, h2 a:link, h2 a:visited
+{
+	color: #CD5050;
+	text-decoration: none;	
+}
+
+h2 a:hover
+{
+	color: #CD5050;	
+	text-decoration: underline;	
+}
+
+h3 a, h3 a:link, h3 a:visited
+{
+	color: #777;
+	text-decoration: none;	
+}
+
+h3 a:hover
+{
+	color: #777;	
+	text-decoration: underline;	
+}
+
+acronym
+{
+	color: #333;
+	text-decoration: underline;	
+	font-style: normal;
+	border-style: none;
+	cursor: help;
+}
+
+.highlight
+{
+	font-weight: bolder;
+}	
+
+.warning
+{
+	font-weight: bolder;
+	color: #EE0000;	
+}
+
+.notify
+{
+	font-weight: bolder;
+	color: #009900;	
+}
+
+.strike
+{
+	text-decoration: line-through;
+}
+
+.underline
+{
+	text-decoration: underline;
+}
+
+pre, code
+{
+	font-family: "Bitstream Vera Sans Mono", monaco, "Courier New", courier, monospace;
+	font-size: 1em;
+	color: #333;	
+}
+
+/* ===================================================================================== */
+
+#sub-content p
+{
+	padding: 0 0 0 10px;
+}
+
+/* ===================================================================================== */
+
+#sub-content ul li
+{
+	font-size: 1.1em;	
+}
+
+#sub-content ul li a
+{
+	color: #444;
+	text-decoration:none;
+}
+
+#sub-content ul li strong a
+{
+	color: #CD5050;
+	text-decoration:none;
+}
+
+#sub-content ul li a:hover
+{
+	color: #CD5050;
+	text-decoration:underline;
+}
+
+#sub-content ul li a:visited
+{
+	color: #999;
+	text-decoration: line-through;
+}
+
+#sub-content dl dt
+{
+	font-weight: bolder;
+	font-size: 1.1em;	
+	line-height: 1.4em;
+	color: #666;
+}
+
+#sub-content dl dd
+{
+	font-size: 1.1em;	
+	line-height: 1.5em;
+}
+
+/* ===================================================================================== */
+
+#content ul.sub-post li
+{
+	font-size: 1em;
+	font-family: helvetica, verdana, sans-serif;
+}
+
+/* ===================================================================================== */
+
+#content ul li
+{
+	font-size: 1.1em;
+}
+
+/* ===================================================================================== */
+
+.comment p
+{
+	margin: 5px 0 10px 0;
+}
