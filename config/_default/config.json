@@ -1,0 +1,25 @@
+{
+  "baseURL": "/",
+  "languageCode": "en-GB",
+  "title": "Beseku",
+  "menu": {
+    "secondary": [{
+      "name": "Work",
+      "url": "https://llama.studio",
+      "weight": 20,
+      "params": {
+        "tabIndex": 0
+      }
+    }]
+  },
+  "permalinks": {
+    "posts": ":section/:2006/:01/:02/:slug",
+    "projects": ":section/:2006/:01/:02/:slug"
+  },
+  "theme": "beseku",
+  "markup": {
+    "goldmark": {
+      "renderer": { "unsafe": true }
+    }
+  }
+}

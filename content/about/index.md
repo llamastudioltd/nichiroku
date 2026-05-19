@@ -3,50 +3,45 @@
 title: "About"
 slug: "about"
 summary: "About Ben Sekulowicz-Barclay and his personal website, Beseku.com."
-  
-type: misc
+
+color: "purple"
 
 menu:
-  main:
+  secondary:
     name: "About"
-    weight: 90
-
-resources:
-  - name: m_post__blob
-    src: about.jpg
-    title: "Eating snails in Djemaa el-Fna, (Marrakesh, 2008)"
     params:
-      alt: "A black & white photograph of me taken in Marrakesh, 2008"
+      tabIndex: 0
+    weight: 10
 
 ---
 
-👋🏻 Hi, I'm Ben.
+👋🏻 Hi, I’m Ben.
 
-I'm a product designer living in [Valencia, Spain][1]. I work for [Typeform][2] where I'm currently leading the design of a brand new product and thinking abut how it will integrate into the overall vision for the next three years.
+I've been making things for the web for over 25 years, and this site has been my personal space on the web since at least 2005. It is a safe space where I can play with design ideas, refresh my coding skills and share content and opinions about things I find interesting or inspiring.
 
-I've been developing and designing apps, services and websites for brands, businesses, governments and start-ups since 2005. I've also launched several personal projects, the latest being Everything Lists, an aggregator for best-of lists for film and television.
+I'm a product person, and I'm pretty good at helping companies create successful new products, especially when starting from zero. I've done this for organisations of all shapes and sizes over the last decade or so, in various different industries and with various different job titles. I’m doing that for myself now, building [Nudge][1] to help schools improve and streamline their admission processes.
 
-You can find out more on [Twitter][4], [Linked In][5] and [Github][6]. I'm also one of the few remaining users of [Flickr][7] and [Last.fm][8].
+I live in [Valencia, Spain][2], having arrived here via the <abbr title="United Kingdom">UK</abbr> and Tokyo. Away from my desk, I enjoy exploring the local mountains on my [road bike][3] or shooting film on my [grail camera][4]. I'm watching less movies since becoming a dad but I log everything I do get to see on [Letterboxd][5]. You can find me scattered around [various][6] [other][7] [social][8] [networks][9] using the name "beseku".
 
-## Colophon
+# Colophon
 
-This website is powered by the [Hugo][9] static site generator. It's great and powerful, but the syntax of Go bewilders me. The whole thing is hosted on [Netlify][10].
+This version of the website is powered by the [Hugo][10] static site generator. The type is set in the variable version of [Cabinet Grotesk][14] by the [Indian Font Foundry][15]. Simple, anonymised analytics are provided by [Cabin][16].
 
-The typeface is [Rox Grotesk][11], designed by [Kostic][12] and served by [Adobe Fonts][13].
+If you dig around, you'll find [various][11] [older][12] [versions][13] of the site from over the years.
 
-Basic anonymous viewer statistics are provided by [Simple Analytics][14].
-
-[1]: https://duckduckgo.com/?q=valencia&t=osx&ia=web&iaxm=about
-[2]: https://typeform.com
-[3]: https://everything.li
-[4]: https://twitter.com/beseku
-[5]: https://www.linkedin.com/in/beseku/
-[6]: https://github.com/beseku
-[7]: https://www.flickr.com/photos/beseku/
-[8]: https://www.last.fm/user/beseku
-[9]: https://gohugo.io
-[10]: https://www.netlify.com
-[11]: https://fonts.adobe.com/fonts/roc-grotesk
-[12]: http://beta.kostictype.com
-[13]: https://fonts.adobe.com
-[14]: https://simpleanalytics.com
+[1]: https://hellonudge.io
+[2]: https://duckduckgo.com/?q=valencia&t=osx&ia=web&iaxm=about
+[3]: https://www.cyclist.co.uk/reviews/fairlight-strael-review
+[4]: https://www.jogeier.com/blog/the-leica-m6-jo-geier/
+[5]: https://letterboxd.com/beseku/
+[6]: https://www.flickr.com/photos/beseku/
+[7]: https://www.last.fm/user/beseku
+[8]: https://mastodon.design/@beseku
+[9]: https://github.com/beseku
+[10]: https://gohugo.io
+[11]: https://v06.beseku.com
+[12]: https://v07.beseku.com
+[13]: https://v08.beseku.com
+[14]: https://www.fontshare.com/fonts/cabinet-grotesk
+[15]: https://www.indiantypefoundry.com
+[16]: https://withcabin.com/privacy/beseku.com
