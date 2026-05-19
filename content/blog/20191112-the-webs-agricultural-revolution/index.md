@@ -1,0 +1,40 @@
+---
+
+title: The web's agricultural revolution
+slug: the-webs-agricultural-revolution
+summary: The development and centralisation of the web through the lens of the agricultural revolution.
+
+date: 2019-11-25T12:00:00+01:00
+draft: false
+
+---
+
+There was a specific period when human behaviour shifted from wandering about in small groups, foraging for food and water, to settling in increasingly large numbers in one place. The catalyst for this shift in behaviour was the domestication of plants and animals; instead of seeking out food in its own habitat we forced it to grow in a way that was convenient for us. This process, about 12,500 years ago, is known as the neolithic or [agricultural revolution][1]. By learning how to generate food in ever more efficient ways, humanity gained the ability to sustain larger and larger populations. This growth in the size of our societal groups led to the formation of defined hierarchical and political structures and marked a shift in how we communicated and shared knowledge and culture on a wider scale.
+
+I feel like the web has followed a similar trajectory over the last fifteen years. When I first started building websites, everything was done on a desktop computer over a dialup connection. The communities that existed were small and spread out, and there was little interaction between them. Everything was centred around blogrolls, newsgroups, forums, and basic aggregators like Digg or Delicious. To create something and publish it online was hard, and expensive; you had to know how to write HTML or Flash, maintain a server and be able to install [Moveable Type][2], [Textpattern][3] or [WordPress][4] and all of their prerequisites (I never got Moveable Type working).
+
+With the advent of smartphones and the wider availability of broadband, more people have fast, reliable access to the web. Technology has developed to the point where we can build platforms that sustain all of these people, enabling communities of billions to interact with each other. With the publishing tools that these platforms provide, sharing our thoughts and ideas is as easy as creating an account, uploading your stuff and hitting Submit. The size of these communities means your posts will be seen by at least a dozen people, but possibly hundreds or thousands. Thanks to the algorithms responsible for surfacing content to users, we no longer need to search for anything manually, we simply scroll through a feed.
+
+Until I read [Sapiens: A Brief History of Humankind][5] by [Yuval Noah Harari][6], it had never occurred to me that the agricultural revolution might not have been as beneficial to humanity as it seems. The shift to fewer, larger populations meant that people died in greater numbers as a result of famine and disease. The larger quantity of food we produced was less varied and farming it required us to work in ways our bodies were not designed. The hierarchies that were established meant that instead of everyone doing less work, the newly established working class spent longer in the fields while landowners barely worked at all. Harari argues that it might be “history’s biggest fraud”, and if offered a choice, many workers would have preferred to return to a life of foraging if given the chance.
+
+Many of the points that Harari makes about humanity’s agricultural revolution have corollaries in how our online behaviour has evolved. As larger physical populations put greater numbers of people at risk of disease and famine, larger online populations expose more people to the spread of extremism and disinformation. The ease with which an idea can now be shared allows concepts to become amplified and enter the mainstream like never before; I’d never encountered an anti-vaxxer or flat-earther before social media though the concepts have existed within their own communities for years. At the size at which social networks now operate, the ability of previously underground ideologies to spread is affecting the politics of most countries, enabling populism and extremism to be viable and acceptable political positions.
+
+Just as agriculture made food easier to produce at the expense of being less varied, so our content diet is becoming more homogenous. It is far easier to produce and share content but the tools we use and the platforms we publish to mean there is little to differentiate one post from another; everyone is using the same filters, theme or template. Because there is so little friction to publishing something, we publish everything; the volume of content we produce is increasing, but the level of quality is decreasing; the signal to noise ratio is getting worse all the time. There is so much stuff out there that instead of seeking it out we have to rely on algorithms designed to constantly give us more. We have little choice in what we see or read and no ability to change our diet.
+
+Instead of plentiful food for all, the agricultural revolution allowed an elite few to control and profit from food production. Similarly, we are now in the situation where giants like Facebook, Google and Twitter control the [majority of the traffic and content online][7]. Instead of giving a platform to every voice, the web has quickly become a corporate owned and sanctioned mouthpiece for those with the most influence and money. While everybody can generate content on a platform if it conforms to the rules and politics, only the platform owners seem to profit, literally making money from everybody else’s work. Where there was once the promise of an open platform with a wide range of opinions and ideas, we have instead allowed a few large companies to become the arbitrators, editors and publishers of almost everything online.
+
+Harari says that by the time we realised it was a bad deal, society had evolved to the point where it was too late to go back; we were fully committed to this new way of living. More than ten thousand years later, we are still dealing with how the agricultural revolution has affected our diets and physiques, and we’re only just beginning to recognise and address the damage it has done to our planet. But there are signs that make me hopeful that it will be different for the web. Users are becoming alert to the spread of extremism and misinformation, losing their trust in social networks and leaving them in increasing numbers. Technology companies are [implementing][8] [safeguards][9] on our devices to limit the constant consumption of content and [new platforms][10] are being created that take the best elements of social networks while adding safeguards to maintain the quality and veracity of content. Most excitingly, there is a resurgence in personal [websites][11] as creators look to decentralise and retain more ownership and control over what they make and write.
+
+Everything happens much faster online; behaviours and ideas spread more quickly and communities grow and shrink far more rapidly than they do in the real world. While it has taken us 12,500 years to get to this point in humanity’s development, the web did it in twenty. As a microcosm of human society, I’m fascinated to see what the result will be if we can alter the trajectory of the web’s own agricultural revolution and learn how that might act as a roadmap to our own future development.
+
+[1]: https://en.wikipedia.org/wiki/Neolithic_Revolution
+[2]: https://movabletype.org
+[3]: https://textpattern.com
+[4]: https://wordpress.org
+[5]: https://en.wikipedia.org/wiki/Sapiens:_A_Brief_History_of_Humankind
+[6]: https://www.ynharari.com
+[7]: https://staltz.com/the-web-began-dying-in-2014-heres-how.html
+[8]: https://www.apple.com/noteroom/2018/06/ios-12-introduces-new-features-to-reduce-interruptions-and-manage-screen-time/
+[9]: https://wellbeing.google/tools/
+[10]: https://joinmastodon.org
+[11]: https://dancohen.org/2018/03/21/back-to-the-blog/

@@ -1,43 +1,5 @@
 {{ define "main" }}
-  <p id="header-home" class="ir">Beseku is the pseudonym of Ben Sekulowicz, a twenty four year old from london who writes about the web development industry, design and the world wide web.</p>
-  
-  <div class="content excerpt">
-    <h1 id="d14">
-      <em class="ir">26.02.06</em> 
-      <a href="#permalink" title="Continue reading &lsquo;Organising CSS Hacks&rsquo;" class="ir">Organising CSS Hacks</a>
-    </h1>			
-    <p>Eumsan volut esto eugue odionsequip velesto essequis mollis lore. Rcilis doloreet vulputat eugiate luptat mus si suspendisse illam. Endio dolorem el elese ullutat. Vero ad duisit iriure inceptos; dionse amconsendre sagittis commodolor quatuer. Hac volenisis tinit ad prate augait massa, ate nonulla dolesecte ullut atinit el. Velit ametumm vulputat dipissit vestibulum ametum prat. Ute dui molestie nullute esse; faciliquisis nonsequam eraestrud fames dit. </p>
-  </div>
-  
-  <div class="content excerpt">
-    <h1 id="d11">
-      <em class="ir">03.01.06</em> 
-      <a href="#permalink" title="Continue reading &lsquo;Updates to FlickArray &ndash; Version 2&rsquo;" class="ir">Updates to FlickArray &ndash; Version 2</a>
-    </h1>			
-    <p>Vendipissit sociosqu metus, minit am, facinci ante, consequ non dolesecte nonulput penatibus. Henit elementum hendrerit qui feugiamet eugiat aci adiat modiam; ute min vulputate consequipis ullamcorper facilisi. Molor facillum tionulla hendre lorper, imperdiet ipsumsan laortie landrem doloborem dio eugiam illaor ipsum. Utetue eugiate consent nostra. Alit elenisit euismod nonummy put; verci dolortisl ulputat feuipsumsan do. </p>
-  </div>
-  
-  <div class="content excerpt">
-    <h1 id="d9">
-      <em class="ir">27.10.05</em> 
-      <a href="#permalink" title="Continue reading &lsquo;Introducing FlickArray&rsquo;" class="ir">Introducing FlickArray</a>
-    </h1>			
-    <p>Mattis num aliscin proin praestie consenisim ent endio vendipissit am modion. Consequat esequi esequat iniam adion, lobortis si augiat feugiam cubilia put pratisl cipsusto vulluptatum. Lacinia dictum adionsequat conulputem ex erostin rutrum. Adipiscing velessim lobortio esequat tinit. Ipsumsan elenisit euguero, facilisse convallis feugiatue feuguerostin eriure doloborper, irilit er faciliquis. Adignim ipsusci feugait doluptatue modo deliquatue elit quatuer lan coreet consenibh. Dignissequis alisi exercillaore ationullaoret velenisit, lum lut quatums ipsustrud ligula ipsustie varius volenisis scillum. Aliquisi nostissi isisiscilit ullutat obor, acidunt ercilis veliquisit dolendrem imperdiet rostisi loboreet magnis vendre. </p>
-  </div>
-  
-  <div class="content excerpt">
-    <h1 id="d5">
-      <em class="ir">19.09.05</em> 
-      <a href="#permalink" title="Continue reading &lsquo;The title&rsquo;" class="ir">The Responsibility of Publishing</a>
-    </h1>			
-    <p>Pede pratisl euguero, scilis dolut ipsustrud vero magnit a, augait augiam varius. Imperdiet aenean nulputpatum consectetuer loboreet coreet ssisci conullandiam adipis; eugiamcorer vendipissit auctor onse ipisim egestas. Deliquatue dolum vent ipsustie cubilia, etueratem pratisl duismolobore. Etueratem duismolobore exercilit psustoismoloreet illaorismoloreet, risus elese mi. Accumsan a nonsenibh adit velessim mattis onse, nec atis volenisis, tinit taciti dip facinci. Venit pellentesque nonummy dionsenit magna adionis. </p>
-  </div>
-  
-  <div class="content excerpt">
-    <h1 id="d1">
-      <em class="ir">01.11.05</em> 
-      <a href="#permalink" title="Continue reading &lsquo;The Dangers of Customisation&rsquo;" class="ir">The Dangers of Customisation</a>
-    </h1>			
-    <p>Quisl cillum adipis consequam faccumsan dolesecte nisl, faciduisit secte eriurer accum peraese incinci. Velisit consent eget, scelerisque vullan, adit quisi, essisit vulput ip vullan quatums. Lobor sapien diamcon commodolor loreetue ercilis. Eraestrud ed verci velisit doloboreet eu dolorpe, dolor alis er issendiam luctus fringilla. Ver fames sim pellentesque eriurer faciduisit rud. Consequipis henis issequiisis molore cillum nosto vehicula hendipisim veros. Volorerci ullut volore eros odolore dignis velit vulputate erat irilit nonisl. Vullan illa curabitur endre gait vero. Convallis vullan orci nulla mi feugait eugiamcorer auguer; sustrud erciduis sustrud senisl. </p>
-  </div>
+  {{ with (where .Site.RegularPages "Parent.Type" "in" (slice "note" "post")) }}
+  {{ partial "o_archives" (where . "Params.list.home" "!=" false) }}
+  {{ end }}
 {{ end }}
