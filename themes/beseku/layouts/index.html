@@ -1,5 +1,0 @@
-{{ define "main" }}
-{{ with (where .Site.RegularPages "Parent.Type" "in" (slice "blog")) }}
-{{ partial "o_entries"  . }}
-{{ end }}
-{{ end }}
