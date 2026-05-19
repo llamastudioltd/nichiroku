@@ -1,0 +1,32 @@
+---
+
+title: "Webforms 2.0 Implementation"
+
+categories:
+- Professional
+
+tags: 
+- ASP
+- XHTML
+- CSS
+
+weight: 20
+
+---
+
+<p><a href="http://www.whatwg.org/specs/web-forms/2004-06-27-call-for-comments/" title="Working Draft: Webforms 2.0">Webforms 2.0</a> is a working draft specification for using form elements on the World Wide Web. Of the features the article discusses, I was mostly concerned with the implementation of a standard set of fields such as pattern, range and URI which could be used universally and validated the same way each time.</p>
+<p>My interest in working with the specification in some form stems from the large use of forms on the sites I currently work with, and the numerous, (mainly legacy based) methods used to validate their content via the client. Implementing a standard specification would solve a number of problems with redundant and duplicate code, and make maintenance and redevelopment easier for all members of the team.</p>
+<h3>This Version of Webforms 2.0</h3>
+<p>The methods I have used to describe a form field's content type, and thus validate it contents on submission are similar to those discussed by <a href="http://www.quirksmode.org" title="QuirksMode - for all your browser quirks">Peter-Paul Koch</a>, that is applying a new attribute type to each form element. This can then be caught by the javascript on submission and functions executed depending on the type.</p>
+<p>On form submission, a function is executed depending on the type, and feedback is then provided if an error is found. This is currently accomplished by highlighting the erroneous field, although more verbose feedback will eventually be added.</p>
+<p>The project currently only has a few data types in place, but I am slowly adding different types of form field which hold various types of content. I am also testing the implementation on various sites as a "catch-all" library to be included for any page that contains form fields, rather than using custom validation on each.</p>
+<p>An example page can be viewed at <a href="http://experiment.beseku.com/webforms/" title="Webforms 2.0 implementation">experiment.beseku.com/webforms/</a>.</p>
+<p>The above <acronym title="Universal Resource Location">URL</acronym> also features a modified version of Cameron Adams' <a href="http://www.themaninblue.com/writing/perspective/2004/10/19/" title="Accessible JavaScript tip #43: onchange select menu">onChange functions</a> for SELECT form elements, not because it is part of the Webforms 2.0 specification, but because there was nowehere else to put it.</p>
+<h3>Future Improvements</h3>
+<p>This is far from a release version, and there are currently a number of outstanding issues yet to be resolved.</p>
+<ul>
+  <li> Page doesn't validate with custom attributes in place.</li>
+  <li>Notification needs to be clearer - append text after the form field node.</li>
+  <li>Only basic, non-standard regular expressions are in place.</li>
+  <li>Only a few field types have been created so far.</li>
+</ul>

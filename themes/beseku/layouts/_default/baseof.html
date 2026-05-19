@@ -1,68 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">	
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <meta name="author" content="Ben Sekulowicz-Barclay" />
-  <meta name="keywords" content="ben, benjamin, sekulowicz, barclay, sekulowicz-barclay, design, standards, june sarpong, rod in your face" />
-  <meta name="description" content="A personal playground and centre for all the information on my projects." />
-  
-  <meta name="robots" content="all" />
-  <meta name="ICBM" content="51.250186, -0.594490" />
-  <meta name="DC.title" content="beseku.com" />	
-  
-  <title>Beseku Dot Com v6 - Standards Based Web Development</title>	
-  
-  {{ $stylesheet := resources.Get "stylesheets/beseku.css" | toCSS | resources.Minify | fingerprint }}
-  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div id="centre">
-    <div id="page">			
-      <div id="header">&nbsp;</div>				
-      <div id="body">			
-      <div id="content-logo">
-        <h1>Beseku.Com v6 - Standards Based Web Development</h1>
-      </div>
-      <div id="content-photo">&nbsp;</div>
-      <div id="content-intro">
-        <div class="left">
-          <p>Beseku.com is the personal website and portfolio of Ben Sekulowicz-Barclay, a web-developer and student at the University of Surrey, England.</p>
-          <p>The work on this site demonstrates my experience as a programmer and developer for the World Wide Web. My academic projects in particular feature creative and experimental work, testing theories and concepts I have learnt from my studies. </p>	
-        </div>
-        <div class="right">
-          <p>My work, (and especially this site) reflect my interest in a semantic and structured Internet. It focuses on maximising the use of compliant mark-up, and the strengths of web standards.</p>
-          <p>If you are looking for the photo gallery, it is now available at <a href="http://experiment.beseku.com/gallery/" title="Beseku.com Photo Gallery">gallery.beseku.com</a>. If you are interested in any of the work featured here, my <a href="/7/about/cv.pdf" title="Curriculum Vitae">CV</a> is available. </p>
-        </div>
-        </div>			
-        
-        <div id="content-project">
-          {{ block "main" . }}{{ end }}
-        </div>
-        
-        <div id="content-toc">
-          <table cellspacing="0">
-            <thead>
-              <tr>
-                <td class="title"><h2>Project Archive</h2></td>
-                <td class="cat"><h2>Type</h2></td>
-                <td class="tech"><h2>Technologies</h2></td>
-              </tr>
-            </thead>
-            <tbody>
-              {{ range .Site.RegularPages.ByWeight.Reverse }}
-              <tr>
-                <td class="title"><a href="{{ .RelPermalink }}" title="View this project: {{ .Title }}">{{ .Title }}</a></td>
-                <td class="cat">{{ delimit .Params.Categories " " }}</td>
-                <td class="tech">{{ delimit .Params.Tags " " }}</td>
-              </tr>
-              {{ end }}
-            </tbody>
-          </table>						
-        </div>        
-        <div id="content-empty"></div>			
-      </div>
-      <div id="footer">&nbsp;</div>		
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" >
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="author" content="Ben Sekulowicz-Barclay" />
+    <meta name="keywords" content="ben, benjamin, sekulowicz, barclay, sekulowicz-barclay, Ben Sekulowicz-Barclay, design, standards, june sarpong, rod in your face" />
+    <meta name="description" content="A personal playground and centre for all the information on my projects." />
+    
+    <meta name="robots" content="all" />		
+    <meta name="geo.position" content="51.4442;-0.1382" />
+    
+    <title>Beseku &middot; 7 &middot; Because its easier to spell than Ben Sekulowicz-Barclay.com</title>
+    
+    {{ $stylesheet := resources.Get "stylesheets/layout.css" | toCSS | resources.Minify | fingerprint }}
+    <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
+    
+    {{ $stylesheet := resources.Get "stylesheets/text.css" | toCSS | resources.Minify | fingerprint }}
+    <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="header">
+      <h1>Beseku &middot; 7</h1>
+      <ul>
+        {{ $current_page := . }}
+        {{ range .Site.Menus.main }}
+          {{ if or (eq $current_page .Page) (eq $current_page.Parent .Page) }}
+          <li><a href="{{ .URL }}" class="active" id="nav-{{ urlize .Name }}" title="{{ .Name }}" accesskey="{{ substr .Name 0 1 }}">{{ .Name }}</a></li>
+          {{ else }}
+          <li><a href="{{ .URL }}" class="inactive" id="nav-{{ urlize .Name }}" title="{{ .Name }}" accesskey="P">{{ .Name }}</a></li>
+          {{ end }}          
+        {{ end }}
+      </ul>
     </div>
-  </div>
-</body>
-</html>
+    
+    {{ block "main" . }}{{ end }}
+  </body>
+</html>	
