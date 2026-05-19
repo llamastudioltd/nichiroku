@@ -1,0 +1,21 @@
+{{ $pages := . }}
+
+<div class="o_archives">
+  <ol class="o_archives__list">
+    {{ range $pages.GroupByDate "2006" "desc" }}
+    {{ $year := int .Key }}
+    
+    {{ $pages_by_year := (where $pages.ByDate.Reverse "Date.Year" $year) }}
+
+    <li class="o_archives__node">
+      <div class="o_year">
+        <ol class="o_year__list">
+          {{ range $pages_by_year }}
+          <li class="o_year__node">{{ partial "o_item" . }}</li>
+          {{ end }}
+        </ol>
+      </div>
+    </li>
+    {{ end }}
+  </ol>
+</div>

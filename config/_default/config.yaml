@@ -1,4 +1,22 @@
 baseURL: "/"
 languageCode: "en-GB"
 title: "Beseku"
+
+author:
+  name: "Ben Sekulowicz-Barclay"
+  email: ben@beseku.com
+
 theme: "beseku"
+permalinks:
+  blog: :section/:2006/:01/:02/:slug
+  news: :section/:2006/:01/:02/:03:04:05
+  work: :section/:slug
+  
+imaging:
+  bgColor: "#55efc4"
+  quality: 75
+  
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

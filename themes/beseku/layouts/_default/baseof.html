@@ -1,67 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>	
-  <title>Beseku.com</title>
-
-  <meta http-equiv="Content-Language" content="en-gb" />
-  <meta name="robots" content="all" />
-  <meta http-equiv="imagetoolbar" content="false" />
-  <meta name="MSSmartTagsPreventParsing" content="true" />
-
-  <meta name="author" content="Ben Sekulowicz" />
-  <meta name="Copyright" content="Copyright (c) 2005 Beseku" />
-  <meta name="description" content="The website of Ben Sekulowicz, web technologist for cimex and developer of Check with mother, flickrShow and delineate" />
-  <meta name="keywords" content="Ben Sekulowicz, Ben Sekulowicz-Barclay, Ben Barclay, Ben, Sekulowicz, Barclay, Sekulowicz-Barclay, Cimex, beseku, June Sarpong" />
-
-  <link rel="alternate" type="application/rss+xml" title="Beseku RSS feed hosted by Feedburner" href="http://feeds.feedburner.com/beseku" />
-  
-  {{ $stylesheet := resources.Get "stylesheets/reset.css" | toCSS | resources.Minify | fingerprint }}
-  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
-  
-  {{ $stylesheet := resources.Get "stylesheets/beseku.css" | toCSS | resources.Minify | fingerprint }}
-  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
-  
-  <!--[if IE 5]>
-  {{ $stylesheet := resources.Get "stylesheets/hacks/ie-win-5.css" | toCSS | resources.Minify | fingerprint }}
-  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
-  <![endif]-->
-  <!--[if IE 6]>
-  {{ $stylesheet := resources.Get "stylesheets/hacks/ie-win-6.css" | toCSS | resources.Minify | fingerprint }}
-  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
-  <![endif]-->
-  <!--[if IE 7]>
-  {{ $stylesheet := resources.Get "stylesheets/hacks/ie-win-7.css" | toCSS | resources.Minify | fingerprint }}
-  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" media="screen" rel="stylesheet" type="text/css" />
-  <![endif]-->
-</head>
-<body>
-<div id="page">
-  <ul id="navigation">
-    {{ $current_page := . }}
-    {{ if or (eq $current_page .Site.Home) }}
-    <li id="navigation-home"><strong><a href="{{ .Site.Home.URL }}" class="ir">Home</a></strong></li>
-    {{ else }}
-    <li id="navigation-home"><a href="{{ .Site.Home.URL }}" class="ir">Home</a></li>
-    {{ end }}
-    
-    {{ range .Site.Menus.main }}
-    <li class="m_menu__cell">
-      {{ if or (eq $current_page .Page) (eq $current_page.Parent .Page) }}
-      <li id="navigation-{{ urlize .Name }}"><strong><a href="{{ .URL }}" class="ir">{{ .Name }}</a></strong></li>
-      {{ else }}
-      <li id="navigation-{{ urlize .Name }}"><a href="{{ .URL }}" class="ir">{{ .Name }}</a></li>
-      {{ end }}
-    </li>
-    {{ end }}
-  </ul>
-  
-  {{ block "main" . }}{{ end }}
-  
-  <ul id="footer">
-    <li id="footer-1"><a href="http://creativecommons.org/licenses/by-nc-nd/2.5/" class="ir">&copy; Ben Sekulowicz 2005</a></li>
-    <li id="footer-2"><a href="http://www.dreamhost.com/rewards.cgi?beseku" class="ir">Hosted by Dreamhost</a></li>
-    <li id="footer-3"><a href="http://feeds.feedburner.com/beseku" class="ir">Feeds by Feedburner</a></li>
-  </ul>
-</div>
-</body>
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+	<head>
+		{{ partial "head" . }}
+	</head>
+	<body id="ue" kind="{{ .Kind }}" type="{{ .Type }}">
+		<div class="l_site">
+			<main class="l_site__body {{ with (.Resources.GetMatch "m_post__blob*") }}l_site__body--page-with-blob{{ end }}">
+				{{ block "main" . }}{{ end }}
+			</main>
+			
+			<footer class="l_site__menu">
+				{{ partial "m_menu" . }}
+			</footer>
+		</div>
+		
+		{{ if (eq (getenv "HUGO_ENV") "production") }}
+		{{ with $.Site.Params.analytics }}
+		{{ range . }}
+			{{ safeHTML . }}
+		{{ end }}
+		{{ end }}
+		{{ end }}
+	</body>
 </html>

@@ -1,0 +1,5 @@
+{{ define "main" }}
+  {{ with .Pages }}
+  {{ partial "o_archives" (where . "Params.list.section" "!=" false) }}
+  {{ end }}
+{{ end }}
