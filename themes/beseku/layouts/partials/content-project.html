@@ -1,0 +1,14 @@
+{{ $project := . }}
+
+<div class="left">
+  {{ with ($project.Resources.GetMatch "title.gif") }}
+  <h2 id="project-{{ urlize .Title }}" style="background-image: url({{ .Permalink }})">Project: {{ $project.Title }}</h2>
+  {{ end }}
+  
+  {{ $project.Content }}
+</div>
+<div class="right">
+  {{ with ($project.Resources.GetMatch "screen.gif") }}
+  <img src="{{ .Permalink }}" alt="Screenshot: Project {{ $project.Title }}" title="{{ $project.Title }}" />
+  {{ end }}
+</div>
