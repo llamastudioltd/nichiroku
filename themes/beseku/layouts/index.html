@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ with (where .Site.RegularPages "Parent.Type" "in" (slice "note" "post")) }}
-  {{ partial "o_archives" (where . "Params.list.home" "!=" false) }}
-  {{ end }}
+{{ with (where .Site.RegularPages "Parent.Type" "in" (slice "blog")) }}
+{{ partial "o_entries"  . }}
+{{ end }}
 {{ end }}

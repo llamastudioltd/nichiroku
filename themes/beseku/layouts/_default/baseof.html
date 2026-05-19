@@ -1,25 +1,127 @@
+{{ $page := . }}
+
 <!DOCTYPE html>
 <html lang="{{ $.Site.LanguageCode | default "en" }}">
-	<head>
-		{{ partial "head" . }}
-	</head>
-	<body id="ue" kind="{{ .Kind }}" type="{{ .Type }}">
-		<div class="l_site">
-			<main class="l_site__body {{ with (.Resources.GetMatch "m_post__blob*") }}l_site__body--page-with-blob{{ end }}">
-				{{ block "main" . }}{{ end }}
-			</main>
-			
-			<footer class="l_site__menu">
-				{{ partial "m_menu" . }}
-			</footer>
-		</div>
-		
-		{{ if (eq (getenv "HUGO_ENV") "production") }}
-		{{ with $.Site.Params.analytics }}
-		{{ range . }}
-			{{ safeHTML . }}
-		{{ end }}
-		{{ end }}
-		{{ end }}
-	</body>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
+  <meta content="{{ $.Site.BaseURL }}humans.txt" name="author">
+  <meta content="{{ $page.Summary | default "¿?" }}" name="description">
+
+  {{ with $.Page.Params.meta }}
+  {{ range $key, $value := . }}
+  <meta content="{{ $key }}" name="{{ $value }}">
+  {{ end }}
+  {{ end }}
+
+  <title>{{ $.Title | default "Untitled" }} - {{ $.Site.Title }}</title>
+
+  {{ with .OutputFormats.Get "rss" }}
+  <link href="{{ .Permalink }}" rel="{{ .Rel }}" title="{{ $.Site.Title }}" type="application/rss+xml" />
+  {{ end }}
+
+  <!-- XHTML Friends Network (XFN) -->
+  {{ with $.Site.Param "XFN" }}
+  {{ range . }}
+  <link href="{{ . }}" rel="me" />
+  {{ end }}
+  {{ end }}
+
+  <!-- opengraph, social networks etc. -->
+  <meta property="og:locale" content="{{ $page.Site.LanguageCode | default "en" }}" />
+  <meta property="og:site_name" content="{{ $page.Site.Title }}" />
+  <meta property="og:title" content="{{ $page.Title | default "Untitled" }} - {{ $.Site.Title }}" />
+  <meta property="og:description" content="{{ $page.Summary | default "¿?" }}" />
+  <meta property="og:url" content="{{ $page.Permalink }}" />
+
+  <meta property="og:article:published_time" content="{{ $page.Date | default "1981-10-27T05:00+00:00" }}">
+  <meta property="og:article:modified_time" content="{{ $page.Lastmod | default "1981-10-27T05:00+00:00" }}">
+  <meta property="og:article:author" content="{{ $page.Site.Title }}" />
+
+  {{ with ($.Resources.GetMatch "opengraph*") }}
+  <meta property="og:image" content="{{ (.Fill "1200x630 Center jpg").RelPermalink }}" />
+  {{ end }}
+
+  <!-- icons -->
+  <link href="{{ $.Site.BaseURL }}favicon-32.png" rel="icon" sizes="32x32">
+  <link href="{{ $.Site.BaseURL }}favicon-57.png" rel="icon" sizes="57x57">
+  <link href="{{ $.Site.BaseURL }}favicon-76.png" rel="icon" sizes="76x76">
+  <link href="{{ $.Site.BaseURL }}favicon-96.png" rel="icon" sizes="96x96">
+  <link href="{{ $.Site.BaseURL }}favicon-128.png" rel="icon" sizes="128x128">
+  <link href="{{ $.Site.BaseURL }}favicon-192.png" rel="icon" sizes="192x192">
+  <link href="{{ $.Site.BaseURL }}favicon-228.png" rel="icon" sizes="228x228">
+  <link href="{{ $.Site.BaseURL }}favicon-196.png" rel="shortcut icon" sizes="196x196">
+  <link href="{{ $.Site.BaseURL }}favicon-120.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="{{ $.Site.BaseURL }}favicon-152.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="{{ $.Site.BaseURL }}favicon-180.png" rel="apple-touch-icon" sizes="180x180">
+
+  <!-- turbo -->
+  <script type="module">
+    addEventListener("load", () => import("https://cdn.skypack.dev/@hotwired/turbo?min"));
+  </script>
+
+  <!-- javascripts -->
+  {{ $javascript := resources.Get "javascripts/beseku.js" | resources.Minify | fingerprint }}
+  <script integrity="{{ $javascript.Data.Integrity }}" src="{{ $javascript.RelPermalink }}" type="text/javascript"></script>
+
+  <!-- stylesheets -->
+  {{ $stylesheet := resources.Get "stylesheets/beseku.scss" | toCSS | resources.Minify | fingerprint }}
+  <link href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="ue">
+  <div class="l_page">
+    <main class="l_page__main">
+      {{ block "main" $page }}{{ end }}
+    </main>
+
+    <nav aria-label="main" class="l_page__header">
+      <div class="m_menu">
+        {{ range .Site.Menus }}
+        {{ $menu := . }}
+        <menu class="m_menu__list">
+          {{ range $menu }}
+          <li class="m_menu__node">
+            {{ if (or (eq $page .Page) ($page.HasMenuCurrent .Menu .)) }}
+            <a class="m_menu__link hover" href="{{ .URL }}" {{ with .Params.TabIndex }}tabindex="{{ . }}" {{ end }}>
+              <strong>{{ .Name }}</strong>
+            </a>
+            {{ else }}
+            <a class="m_menu__link" href="{{ .URL }}" {{ with .Params.TabIndex }}tabindex="{{ . }}" {{ end }}>
+              <span>{{ .Name }}</span>
+            </a>
+            {{ end }}
+          </li>
+          {{ end }}
+        </menu>
+        {{ end }}
+      </div>
+    </nav>
+
+    <nav aria-label="meta" class="l_page__footer">
+      <div class="m_meta">
+        <menu class="m_meta__menu">
+          <li class="m_meta__node">
+            <span class="m_meta__text">&copy; Ben S<span class="u_kill mobile_portrait">ekulowicz-Barclay</span>, 2005&thinsp;&ndash;&thinsp;{{ now.Format "2006" }}</span>
+          </li>
+        </menu>
+
+        <menu class="m_meta__menu">
+          <li class="m_meta__node">
+            <a class="m_meta__link" href="#ue">Top</a>
+          </li>
+        </menu>
+      </div>
+    </nav>
+  </div>
+
+  {{ if (eq (getenv "HUGO_ENV") "production") }}
+  {{ with $.Site.Params.analytics }}
+  {{ range . }}{{ safeHTML . }}{{ end }}
+  {{ end }}
+  {{ end }}
+</body>
+
 </html>

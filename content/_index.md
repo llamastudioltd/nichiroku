@@ -1,11 +1,14 @@
 ---
 
-title: "Home"
-slug: "home"
-summary: "The personal website of Ben Sekulowicz-Barclay. Frequently redesigned, infrequently updated since 2005."
-  
+title: Home
+slug: index
+summary: The personal website of Ben Sekulowicz-Barclay. Frequently redesigned, infrequently updated since 2005
+
 menu:
-  main:
+  primary:
+    name: "Everything"
+    params:
+      tabIndex: 0
     weight: 10
 
 ---

@@ -1,5 +1,5 @@
 {{ define "main" }}
   {{ with .Pages }}
-  {{ partial "o_archives" (where . "Params.list.section" "!=" false) }}
+    {{ partial "o_entries" . }}
   {{ end }}
 {{ end }}
