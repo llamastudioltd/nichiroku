@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <section class="min-h-screen px-6 lg:px-12 py-48 flex flex-col items-stretch justify-center">
+   <p class="font-bold text-2xl lg:text-3xl xl:text-4xl text-pretty text-gray-800">Lorem ipsum dolor sit amet. Consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
+  </section>
+  <section class="-mt-12 lg:-mt-18 p-6 lg:p-12 flex flex-col items-stretch justify-start gap-6">
+    <ol class="grid grid-cols-12 gap-3">
+      {{ range where .Site.RegularPages "Section" "projects" }}
+        <li class="col-span-12 lg:col-span-6 first:lg:col-span-12 rounded-md overflow-hidden">
+          <a class="group relative flex flex-col items-stretch justify-start" href="{{ .RelPermalink }}">
+            <picture>
+              {{ with .Resources.Get "home.png" }}
+                {{ $filter := images.Process "webp q100" }}
+                {{ with .Filter $filter }}
+                  <source srcset="{{ .RelPermalink }}" type="image/webp">
+                {{ end }}
+              
+                <img src="{{ .RelPermalink }}" class="w-full h-auto" alt="" width="{{ .Width }}" height="{{ .Height }}">
+              {{ end }}
+            </picture>
+            
+            <div class="absolute inset-0 p-6 lg:p-12 flex flex-col items-center justify-center bg-gray-800/50 opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-lg transition-opacity duration-150">
+              <h2 class="font-bold text-md text-white text-center">{{ .Title }}</h2>
+              <h3 class="text-sm text-white/50 text-center">{{ .Params.Role }} at {{ .Params.Client }}, {{ .Params.Year.Start }}&thinsp;&ndash;&thinsp;{{ .Params.Year.End }}</h3>
+            </div>
+          </a>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+{{ end }}

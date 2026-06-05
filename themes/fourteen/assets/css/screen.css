@@ -1,73 +1,28 @@
-@import "tailwindcss";
-
-@font-face {
-  font-display: swap;
-  font-family: "Circular";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/circular-book.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Circular";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/circular-medium.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Circular";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/circular-bold.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Circular";
-  font-style: normal;
-  font-weight: 900;
-  src: url("/fonts/circular-black.woff2") format("woff2");
-}
+@import "./vendor/reset.css";
 
 :root {
-  --font-sans: "Circular", system-ui, sans-serif;
-  --font-feature-settings-sans: "ss02" on, "ss05" on;
+  --color-default: #FFFFFF;
+  --color-default-foreground: #111111;
 
-  --font-serif: "Circular", system-ui, sans-serif;
-  --font-feature-settings-serif: "ss02" on, "ss05" on;
+  --font-family-sans: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --font-weight-sans-normal: 400;
+
+  --font-family-serif: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  --font-weight-serif-normal: 400;
 }
 
 html {
-  font-family: var(--font-sans);
-  font-feature-settings: var(--font-feature-settings-sans);
   font-size: 16px;
-
-  @media (min-width: 640px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 21px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 21px;
-  }
-
-  @media (min-width: 1536px) {
-    font-size: 24px;
-  }
+  line-height: 1em;
 }
 
 body {
-  background-size: cover;
-  background-image: url("/images/light/body--valencia.svg");
-  background-attachment: fixed;
+  background-color: var(--color-default);
+  color: var(--color-default-foreground);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-sans-normal);
+}
+
+a {
+  color: inherit;
 }
