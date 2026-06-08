@@ -1,3 +1,25 @@
 {{ define "main" }}
-  <p><code>term.html</code></p>
+  {{ $site := $.Site }}
+  {{ $page := . }}
+  
+  <div class="Tags">
+    <ul class="TagsList">
+      <li class="TagsNode"><a class="TagsLink" href="{{ $site.BaseURL }}">Everything</a></li>
+      
+      {{ range $site.Taxonomies.tags }}
+      {{ if eq .Page.Title $page.Title }}
+      <li class="TagsNode"><strong><a aria-current="page" class="TagsLink TagsLink:Current" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></strong></li>
+      {{ else }}
+      <li class="TagsNode"><a class="TagsLink" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+      {{ end }}
+      {{ end }}
+    </ul><!-- .TagsList -->
+  </div><!-- .Tags -->
+  
+  <div class="Cards">
+    {{ with where .Pages.ByDate.Reverse "Section" "portfolio" }}
+    {{ partial "cards_list.html" . }}
+    {{ end }}
+  </div><!-- .Cards -->
 {{ end }}
+

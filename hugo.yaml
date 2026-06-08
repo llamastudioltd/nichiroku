@@ -3,18 +3,14 @@ locale: en-GB
 title: Ben Sekulowicz-Barclay
 theme: Fourteen
 
-build:
-  buildStats:
-    enable: true
-  cachebusters:
-  - source: 'assets/notwatching/hugo_stats\.json'
-    target: css
-  - source: '(postcss|tailwind)\.config\.js'
-    target: css
-module:
-  mounts:
-  - source: assets
-    target: assets
-  - disableWatch: true
-    source: hugo_stats.json
-    target: assets/notwatching/hugo_stats.json
+menus:
+  main:
+  - name: Portfolio
+    pageRef: /
+    weight: 10
+  - name: About
+    pageRef: /about
+    weight: 20
+  - name: Contact
+    pageRef: /contact
+    weight: 30

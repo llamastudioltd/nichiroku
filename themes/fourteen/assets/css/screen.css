@@ -1,28 +1,246 @@
 @import "./vendor/reset.css";
 
+@font-face {
+  font-display: swap;
+  font-family: "Circular";
+  font-style: 400;
+  font-weight: var(--font-normal);
+  src: url("/fonts/circular-book.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Circular";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/circular-medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Circular";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/circular-bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Circular";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/fonts/circular-black.woff2") format("woff2");
+}
+
 :root {
-  --color-default: #FFFFFF;
-  --color-default-foreground: #111111;
+  --color-default-strong: oklch(96.7% 0.001 286.375);
+  --color-default: oklch(98.5% 0 0);
 
-  --font-family-sans: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-  --font-weight-sans-normal: 400;
+  --color-default-foreground: oklch(21% 0.006 285.885);
+  --color-default-foreground-weak: oklch(55.2% 0.016 285.938);
+  --color-default-foreground-weaker: oklch(70.5% 0.015 286.067);
 
-  --font-family-serif: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
-  --font-weight-serif-normal: 400;
+  --font-sans: "Circular", Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --font-sans--feature-settings: "ss05" on;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+  --font-black: 900;
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+
+  --text-md: 1rem;
+  --text-md--line-height: 1.5;
+
+  --text-lg: 2.25rem;
+  --text-lg--line-height: 1.25;
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1em;
 }
 
 body {
   background-color: var(--color-default);
   color: var(--color-default-foreground);
-  font-family: var(--font-family-sans);
-  font-weight: var(--font-weight-sans-normal);
+  font: normal var(--font-normal) var(--text-md) / var(--text-md--line-height) var(--font-sans);
+  padding: 3rem;
 }
 
 a {
   color: inherit;
+}
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+em,
+i {
+  font-style: inherit;
+}
+
+.Page {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 12rem;
+  justify-items: flex-start;
+}
+
+.PageHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.PageHeaderLogo {
+  font-size: var(--text-md);
+  font-weight: var(--font-medium);
+  line-height: var(--text-md--line-height);
+  text-decoration: none;
+}
+
+.PageMenu {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: flex-start;
+}
+
+.PageMenuList {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: var(--text-md);
+  gap: 1.5rem;
+  justify-content: flex-start;
+  line-height: var(--text-md--line-height);
+}
+
+.PageMenuLink {
+  color: var(--color-default-foreground-weak);
+  text-decoration: none;
+  transition-property: all;
+  transition-duration: 0.1s;
+
+  &:hover {
+    color: var(--color-default-foreground);
+  }
+}
+
+.PageMenuLink\:Current {
+  color: var(--color-default-foreground);
+  font-weight: var(--font-medium);
+}
+
+.PageMain {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 12rem;
+  justify-content: flex-start;
+}
+
+.Tags {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+}
+
+.TagsList {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  line-height: var(--text-lg--line-height);
+}
+
+.TagsNode {
+  color: var(--color-default-foreground-weaker);
+  display: inline;
+
+  &:not(:last-child):after {
+    content: ", ";
+  }
+
+  &:last-child:after {
+    content: ".";
+  }
+}
+
+.TagsLink {
+  color: inherit;
+  text-decoration: none;
+  transition-property: all;
+  transition-duration: 0.1s;
+
+  &:hover {
+    color: var(--color-default-foreground);
+  }
+}
+
+.TagsLink\:Current {
+  color: var(--color-default-foreground);
+}
+
+.Cards {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+}
+
+.CardsList {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.CardsNode {
+  grid-column: span 6/span 6;
+}
+
+.Card {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-items: flex-start;
+}
+
+a.Card {
+  text-decoration: none;
+}
+
+.CardHeader {
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.CardHeaderImage {
+  background-color: var(--color-default-strong);
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+.CardTitle {
+  color: var(--color-default-foreground);
+  font-size: var(--text-md);
+  font-weight: var(--font-medium);
+  line-height: var(--text-md--line-height);
+}
+
+.CardSubtitle {
+  color: var(--color-default-foreground-weak);
+  font-size: var(--text-md);
+  line-height: var(--text-md--line-height);
 }

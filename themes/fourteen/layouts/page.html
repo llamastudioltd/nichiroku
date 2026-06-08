@@ -1,12 +1,4 @@
 {{ define "main" }}
-  <ul>
-    {{ range .Ancestors.Reverse }}
-      {{ if .IsSection }}
-      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-      {{ end }}  
-    {{ end }}
-  </ul>
-
   <h1>{{ .Title }}</h1>
   
   {{ .Content }}

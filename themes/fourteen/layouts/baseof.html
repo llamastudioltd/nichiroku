@@ -23,31 +23,40 @@
     <link rel="preconnect" href="{{ $site.BaseURL }}">
     <link rel="dns-prefetch" href="{{ $site.BaseURL }}">
     
-    {{ partial "head/css.html" . }}
+    {{ with resources.Get "css/screen.css" | css.Build }}
+      {{ if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{ else }}
+      {{ with . | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{ end }}
+      {{ end }}
+    {{ end }}
     
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png">
     <link href="/favicon.ico" rel="icon" sizes="32x32">
     <link href="/icon.svg" rel="icon" type="image/svg+xml">
   </head>
-  <body class="">
-    <header>
-      <p><a href="{{ $site.BaseURL }}">{{ $site.Title }}</a></p>
-      
-      {{ range site.Menus.header }}
-      <menu>
-        <ul>
-          {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
-            <li><strong><a aria-current="page" href="{{ .URL }}">{{ .Name }}</a></strong></li>
-          {{ else }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ end }}
-        </ul>
-      </menu>
-      {{ end }}
-    </header>
-    <hr />
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+  <body>
+    <div class="Page">
+      <header class="PageHeader">
+        <a class="PageHeaderLogo" href="{{ $site.BaseURL }}">{{ $site.Title }}</a>
+        
+        <menu class="PageMenu">
+          <ul class="PageMenuList">
+            {{ range site.Menus.main }}
+            {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
+              <li class="PageMenuNode"><a aria-current="page" class="PageMenuLink PageMenuLink:Current" href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ else }}
+              <li class="PageMenuNode"><a class="PageMenuLink" href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+            {{ end }}
+          </ul><!-- PageMenuList -->
+        </menu><!-- .PageMenu -->
+      </header><!-- .PageHeader -->
+      <main class="PageMain">
+        {{ block "main" . }}{{ end }}
+      </main><!-- .PageMain -->
+    </div><!-- .Page -->
   </body>
 </html>
