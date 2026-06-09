@@ -40,29 +40,42 @@
   <body>
     <div class="Site">
       <header class="SiteHeader">
-        <a class="SiteHeaderLogo" href="{{ $site.BaseURL }}">{{ $site.Title }}</a>
+        <a class="Logo" href="{{ $site.BaseURL }}">{{ $site.Title }}</a>
         
-        <menu class="SiteMenu">
-          <ul class="SiteMenuList">
-            {{ if or ($page.IsHome) (eq $page.Kind "term") (eq $page.Section "portfolio") }}
-              <li class="SiteMenuNode"><a aria-current="page" class="SiteMenuLink SiteMenuLink:Current" href="{{ $site.BaseURL }}">Portfolio</a></li>
+        <menu class="Menu">
+          <ul class="MenuList">
+            {{ if or ($page.IsHome) (eq $page.Kind "term") (eq $page.Section "projects") }}
+              <li class="MenuNode"><a aria-current="page" class="MenuLink MenuLink:Current" href="{{ $site.BaseURL }}">Portfolio</a></li>
             {{ else }}
-              <li class="SiteMenuNode"><a class="SiteMenuLink" href="{{ $site.BaseURL }}">Portfolio</a></li>
+              <li class="MenuNode"><a class="MenuLink" href="{{ $site.BaseURL }}">Portfolio</a></li>
             {{ end }}
             
             {{ range site.Menus.main }}
             {{ if ($page.IsMenuCurrent .Menu .) }}
-              <li class="SiteMenuNode"><a aria-current="page" class="SiteMenuLink SiteMenuLink:Current" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="MenuNode"><a aria-current="page" class="MenuLink MenuLink:Current" href="{{ .URL }}">{{ .Name }}</a></li>
             {{ else }}
-              <li class="SiteMenuNode"><a class="SiteMenuLink" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="MenuNode"><a class="MenuLink" href="{{ .URL }}">{{ .Name }}</a></li>
             {{ end }}
             {{ end }}
-          </ul><!-- SiteMenuList -->
-        </menu><!-- .SiteMenu -->
+          </ul><!-- MenuList -->
+        </menu><!-- .Menu -->
       </header><!-- .SiteHeader -->
+      
       <div class="SiteMain">
         {{ block "main" $page }}{{ end }}
       </div><!-- .SiteMain -->
+      
+      <footer class="SiteFooter">
+        <p class="Copy">&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</p>
+        
+        <menu class="Menu">
+          <ul class="MenuList">
+            <li class="MenuNode"><a class="MenuLink" href="https://www.flickr.com/photos/beseku/">Flickr</a></li>
+            <li class="MenuNode"><a class="MenuLink" href="https://github.com/beseku">GitHub</a></li>
+            <li class="MenuNode"><a class="MenuLink" href="https://www.linkedin.com/in/beseku/">LinkedIn</a></li>
+          </ul><!-- MenuList -->
+        </menu><!-- .Menu -->
+      </footer><!-- .SiteFooter -->
     </div>
   </body>
 </html>

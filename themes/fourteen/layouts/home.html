@@ -2,21 +2,19 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <div class="Section">
-    <div class="Terms">
-      <ol class="TermsList">
-        <li class="TermsNode"><strong><a aria-current="page" class="TermsLink TermsLink:Current" href="{{ $site.BaseURL }}">Everything</a></strong></li>
-        
-        {{ range $site.Taxonomies.tags }}
-        <li class="TermsNode"><a class="TermsLink" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
-        {{ end }}
-      </ol><!-- .TermsList -->
-    </div><!-- .Terms -->
-    
-    <div class="Cards">
-      {{ with where $site.RegularPages.ByDate.Reverse "Section" "portfolio" }}
-      {{ partial "cards_list.html" . }}
+  <div class="Terms">
+    <ol class="TermsList">
+      <li class="TermsNode"><strong><a aria-current="page" class="TermsLink TermsLink:Current" href="{{ $site.BaseURL }}">Everything</a></strong></li>
+      
+      {{ range $site.Taxonomies.tags }}
+      <li class="TermsNode"><a class="TermsLink" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
       {{ end }}
-    </div><!-- .Cards -->
-  </div><!-- .Section -->
+    </ol><!-- .TermsList -->
+  </div><!-- .Terms -->
+  
+  <div class="Cards">
+    {{ with where $site.RegularPages.ByDate.Reverse "Section" "projects" }}
+    {{ partial "cards_list.html" . }}
+    {{ end }}
+  </div><!-- .Cards -->
 {{ end }}

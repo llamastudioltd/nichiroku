@@ -18,7 +18,7 @@
     </div><!-- .Terms -->
     
     <div class="Cards">
-      {{ with where .Pages.ByDate.Reverse "Section" "portfolio" }}
+      {{ with where .Pages.ByDate.Reverse "Section" "projects" }}
       {{ partial "cards_list.html" . }}
       {{ end }}
     </div><!-- .Cards -->
