@@ -4,15 +4,17 @@
 <li class="CardsNode">
   <a class="Card" href="{{ $page.RelPermalink }}">
     <div class="CardHeader">
-      <div class="CardHeaderImage"></div>
+      <div class="img"></div>
     </div><!-- .CardHeader -->
     <div class="CardMain">
       <h1 class="CardTitle">
-        {{ .Title }}
+        {{ $page.Title }}
       </h1>
+      {{ with $page.Params.Subtitle }}
       <h2 class="CardSubtitle">
-        {{ $page.Params.Role }} at {{ $page.Params.Client }}, {{ $page.Params.Year.Start }}&thinsp;&ndash;&thinsp;{{ $page.Params.Year.End }}
+        {{ . }}
       </h2>
+      {{ end }}
     </div><!-- .CardMain -->
   </a><!-- .Card -->
 </li>

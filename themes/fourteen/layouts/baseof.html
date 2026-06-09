@@ -27,7 +27,7 @@
       {{ if hugo.IsDevelopment }}
       <link rel="stylesheet" href="{{ .RelPermalink }}">
       {{ else }}
-      {{ with . | fingerprint }}
+      {{ with . | minify | fingerprint }}
         <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
       {{ end }}
       {{ end }}
@@ -38,25 +38,25 @@
     <link href="/icon.svg" rel="icon" type="image/svg+xml">
   </head>
   <body>
-    <div class="Page">
-      <header class="PageHeader">
-        <a class="PageHeaderLogo" href="{{ $site.BaseURL }}">{{ $site.Title }}</a>
+    <div class="Site">
+      <header class="SiteHeader">
+        <a class="SiteHeaderLogo" href="{{ $site.BaseURL }}">{{ $site.Title }}</a>
         
-        <menu class="PageMenu">
-          <ul class="PageMenuList">
+        <menu class="SiteMenu">
+          <ul class="SiteMenuList">
             {{ range site.Menus.main }}
             {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
-              <li class="PageMenuNode"><a aria-current="page" class="PageMenuLink PageMenuLink:Current" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="SiteMenuNode"><a aria-current="page" class="SiteMenuLink SiteMenuLink:Current" href="{{ .URL }}">{{ .Name }}</a></li>
             {{ else }}
-              <li class="PageMenuNode"><a class="PageMenuLink" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="SiteMenuNode"><a class="SiteMenuLink" href="{{ .URL }}">{{ .Name }}</a></li>
             {{ end }}
             {{ end }}
-          </ul><!-- PageMenuList -->
-        </menu><!-- .PageMenu -->
-      </header><!-- .PageHeader -->
-      <main class="PageMain">
-        {{ block "main" . }}{{ end }}
-      </main><!-- .PageMain -->
-    </div><!-- .Page -->
+          </ul><!-- SiteMenuList -->
+        </menu><!-- .SiteMenu -->
+      </header><!-- .SiteHeader -->
+      <div class="SiteMain">
+        {{ block "main" $page }}{{ end }}
+      </div><!-- .SiteMain -->
+    </div>
   </body>
 </html>

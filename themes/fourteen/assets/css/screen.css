@@ -3,8 +3,8 @@
 @font-face {
   font-display: swap;
   font-family: "Circular";
-  font-style: 400;
-  font-weight: var(--font-normal);
+  font-style: normal;
+  font-weight: 400;
   src: url("/fonts/circular-book.woff2") format("woff2");
 }
 
@@ -33,6 +33,7 @@
 }
 
 :root {
+  --color-default-stronger: oklch(92% 0.004 286.32);
   --color-default-strong: oklch(96.7% 0.001 286.375);
   --color-default: oklch(98.5% 0 0);
 
@@ -57,20 +58,35 @@
   --text-md: 1rem;
   --text-md--line-height: 1.5;
 
-  --text-lg: 2.25rem;
+  --text-lg: 1.5rem;
   --text-lg--line-height: 1.25;
+
+  --text-xl: 2.25rem;
+  --text-xl--line-height: 1.25;
+
+  --transition-duration-sm: 0.15s;
 }
 
 html {
-  font-size: 18px;
-  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: clamp(16px, 0.8641rem + 0.5435vw, 18px);
+
+  @media (width >=768px) {
+    font-size: clamp(18px, 0.75rem + 0.5859vw, 21px);
+  }
 }
 
 body {
   background-color: var(--color-default);
   color: var(--color-default-foreground);
+
+  background-size: cover;
+  background-image: url("/images/light/body--valencia.svg");
+  background-attachment: fixed;
   font: normal var(--font-normal) var(--text-md) / var(--text-md--line-height) var(--font-sans);
-  padding: 3rem;
+  font-feature-settings: var(--font-sans--feature-settings);
 }
 
 a {
@@ -87,29 +103,41 @@ i {
   font-style: inherit;
 }
 
-.Page {
+.Site {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  gap: 12rem;
-  justify-items: flex-start;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  padding: 1.5rem;
+
+  @media (width >=768px) {
+    gap: 3rem;
+    padding: 3rem;
+  }
+
+  @media (width >=1536px) {
+    margin-inline: auto;
+    width: calc(1536px - (3rem + 3rem));
+  }
 }
 
-.PageHeader {
+.SiteHeader {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.PageHeaderLogo {
+.SiteHeaderLogo {
   font-size: var(--text-md);
-  font-weight: var(--font-medium);
+  font-weight: var(--font-bold);
   line-height: var(--text-md--line-height);
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.PageMenu {
+.SiteMenu {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -117,7 +145,7 @@ i {
   justify-content: flex-start;
 }
 
-.PageMenuList {
+.SiteMenuList {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -127,94 +155,120 @@ i {
   line-height: var(--text-md--line-height);
 }
 
-.PageMenuLink {
+.SiteMenuLink {
   color: var(--color-default-foreground-weak);
   text-decoration: none;
-  transition-property: all;
-  transition-duration: 0.1s;
+  transition-property: color;
+  transition-duration: var(--transition-duration-sm);
 
   &:hover {
     color: var(--color-default-foreground);
   }
 }
 
-.PageMenuLink\:Current {
+.SiteMenuLink\:Current {
   color: var(--color-default-foreground);
   font-weight: var(--font-medium);
 }
 
-.PageMain {
+.SiteMain {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  gap: 12rem;
+  gap: 1.5rem;
   justify-content: flex-start;
+
+  @media (width >=768px) {
+    gap: 3rem;
+  }
 }
 
-.Tags {
+.Article {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  justify-items: flex-start;
+  gap: 3rem;
+  justify-content: flex-start;
+
+  @media (width >=768px) {
+    margin-inline: auto;
+    max-width: 40rem;
+  }
 }
 
-.TagsList {
+.ArticleHeader {
+  padding-block-start: 9rem;
+}
+
+.ArticleTitle,
+.ArticleSubtitle {
+  text-wrap: pretty;
+}
+
+.ArticleTitle {
+  color: var(--color-default-foreground);
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
   line-height: var(--text-lg--line-height);
-}
 
-.TagsNode {
-  color: var(--color-default-foreground-weaker);
-  display: inline;
-
-  &:not(:last-child):after {
-    content: ", ";
-  }
-
-  &:last-child:after {
-    content: ".";
+  @media (width >=768px) {
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
   }
 }
 
-.TagsLink {
-  color: inherit;
-  text-decoration: none;
-  transition-property: all;
-  transition-duration: 0.1s;
+.ArticleSubtitle {
+  color: var(--color-default-foreground-weak);
+  font-size: var(--text-md);
+  font-weight: var(--font-normal);
+  line-height: var(--text-md--line-height);
 
-  &:hover {
-    color: var(--color-default-foreground);
+  @media (width >=768px) {
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
   }
 }
 
-.TagsLink\:Current {
-  color: var(--color-default-foreground);
+.ArticleTitle+.ArticleSubtitle {
+  margin-block-start: 0.5rem;
+}
+
+.Section {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: flex-start;
 }
 
 .Cards {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  justify-items: flex-start;
+  justify-content: flex-start;
 }
 
 .CardsList {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 3rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .CardsNode {
-  grid-column: span 6/span 6;
+  grid-column: span 6;
+
+  @media (width >=1024px) {
+    grid-column: span 3;
+  }
 }
 
 .Card {
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  justify-items: flex-start;
+  gap: 1.5rem;
+  justify-content: flex-start;
 }
 
 a.Card {
@@ -222,14 +276,18 @@ a.Card {
 }
 
 .CardHeader {
-  border-radius: 0.25rem;
-  overflow: hidden;
+  .img {
+    background-color: var(--color-default-stronger);
+
+    aspect-ratio: 16 / 9;
+    border-radius: 0.25rem;
+    display: block;
+  }
 }
 
-.CardHeaderImage {
-  background-color: var(--color-default-strong);
-  aspect-ratio: 16 / 9;
-  display: block;
+.CardTitle,
+.CardSubtitle {
+  text-wrap: pretty;
 }
 
 .CardTitle {
@@ -243,4 +301,125 @@ a.Card {
   color: var(--color-default-foreground-weak);
   font-size: var(--text-md);
   line-height: var(--text-md--line-height);
+}
+
+.Terms {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (orientation: landscape) {
+    min-height: calc(100vh - ((1.5rem + 1.5rem + 1.5rem) * 2));
+
+    @media (width >=768px) {
+      min-height: calc(100vh - ((3rem + 1.5rem + 3rem) * 2));
+    }
+  }
+
+  @media (orientation: portrait) {
+    min-height: calc((100vh - ((1.5rem + 1.5rem + 1.5rem) * 2)) * 0.75);
+
+    @media (width >=768px) {
+      min-height: calc((100vh - ((3rem + 1.5rem + 3rem) * 2)) * 0.75);
+    }
+  }
+}
+
+.TermsList {
+  color: var(--color-default-foreground-weaker);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  line-height: var(--text-lg--line-height);
+  padding-block: 9rem;
+  text-wrap: pretty;
+
+  @media (width >=768px) {
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+  }
+}
+
+.TermsNode {
+  display: inline;
+
+  &:not(:last-child):after {
+    content: ", ";
+  }
+
+  &:last-child:after {
+    content: ".";
+  }
+}
+
+.TermsLink {
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: var(--transition-duration-sm);
+
+  &:hover {
+    color: var(--color-default-foreground);
+  }
+}
+
+.TermsLink\:Current {
+  color: var(--color-default-foreground);
+}
+
+.Prose {
+
+  p {
+    text-align: left;
+    text-wrap: pretty;
+
+    &:not(:last-child) {
+      margin-block-end: 0.75rem;
+    }
+
+    @media (width >=768px) {
+      text-align: justify;
+    }
+  }
+
+  figure {
+    &:not(:first-child) {
+      margin-block-start: 3rem;
+    }
+
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+
+    @media (width >=768px) {
+      margin-inline: calc(50% - (50vw - (1.5rem + 1.5rem)));
+      width: calc(100vw - (3rem + 3rem));
+    }
+
+    @media (width >=1536px) {
+      margin-inline: calc(50% - (768px - (1.5rem + 1.5rem)));
+      width: calc(1536px - (3rem + 3rem));
+    }
+  }
+
+  figcaption {
+    color: var(--color-default-foreground-weak);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+  }
+
+  .picture {
+    background-color: var(--color-default-stronger);
+
+    aspect-ratio: 2.25 / 1;
+    border-radius: 0.25rem;
+    display: block;
+
+    &:not(:first-child) {
+      margin-block-start: 1.5rem;
+    }
+
+    &:not(:last-child) {
+      margin-block-end: 1.5rem;
+    }
+  }
 }
