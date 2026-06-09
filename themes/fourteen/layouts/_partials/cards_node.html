@@ -3,9 +3,15 @@
 
 <li class="CardsNode">
   <a class="Card" href="{{ $page.RelPermalink }}">
-    <div class="CardHeader">
-      <div class="img"></div>
-    </div><!-- .CardHeader -->
+    <picture class="CardPicture">
+      {{ with .Resources.Get "images/card/600x400@2x.png" }}
+      <source media="(min-width: 1024px)" srcset="{{ .RelPermalink }}">
+      {{ end }}
+      
+      {{ with .Resources.Get "images/card/600x300@2x.png" }}
+      <img alt="Placehold.co" height="{{ .Height }}" src="{{ .RelPermalink }}" title="{{ $page.Title }}" width="{{ .Width }}" />
+      {{ end }}
+    </picture><!-- .CardPicture -->
     <div class="CardMain">
       <h1 class="CardTitle">
         {{ $page.Title }}

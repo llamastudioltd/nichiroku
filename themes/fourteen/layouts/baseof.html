@@ -27,7 +27,7 @@
       {{ if hugo.IsDevelopment }}
       <link rel="stylesheet" href="{{ .RelPermalink }}">
       {{ else }}
-      {{ with . | minify | fingerprint }}
+      {{ with . | fingerprint }}
         <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
       {{ end }}
       {{ end }}
@@ -44,8 +44,14 @@
         
         <menu class="SiteMenu">
           <ul class="SiteMenuList">
+            {{ if or ($page.IsHome) (eq $page.Kind "term") (eq $page.Section "portfolio") }}
+              <li class="SiteMenuNode"><a aria-current="page" class="SiteMenuLink SiteMenuLink:Current" href="{{ $site.BaseURL }}">Portfolio</a></li>
+            {{ else }}
+              <li class="SiteMenuNode"><a class="SiteMenuLink" href="{{ $site.BaseURL }}">Portfolio</a></li>
+            {{ end }}
+            
             {{ range site.Menus.main }}
-            {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
+            {{ if ($page.IsMenuCurrent .Menu .) }}
               <li class="SiteMenuNode"><a aria-current="page" class="SiteMenuLink SiteMenuLink:Current" href="{{ .URL }}">{{ .Name }}</a></li>
             {{ else }}
               <li class="SiteMenuNode"><a class="SiteMenuLink" href="{{ .URL }}">{{ .Name }}</a></li>

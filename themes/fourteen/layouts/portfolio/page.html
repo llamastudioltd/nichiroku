@@ -1,0 +1,24 @@
+{{ define "main" }}
+  {{ $site := $.Site }}
+  {{ $page := . }}
+  
+  <div class="Article">
+    {{ if $page.Title }}
+    <div class="ArticleHeader">
+      <h1 class="ArticleTitle">
+        {{ $page.Title }}
+      </h1>
+      
+      {{ with $page.Params.Subtitle }}
+      <h2 class="ArticleSubtitle">
+        {{ . }}
+      </h2>
+      {{ end }}
+    </div><!-- .ArticleHeader -->
+    {{ end }}
+    
+    <div class="ArticleBody">
+      {{ $page.Content }}
+    </div><!-- .ArticleBody -->
+  </div><!-- .Article -->
+{{ end }}
