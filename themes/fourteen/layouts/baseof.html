@@ -40,11 +40,13 @@
   <body>
     <div class="Site">
       <header class="SiteHeader">
-        <a class="Logo" href="{{ $site.BaseURL }}">{{ $site.Title }}</a>
+        <a class="Logo" href="{{ $site.BaseURL }}">
+          Ben Seku<span class="LogoExtended">lowicz-Barclay</span>
+        </a>
         
         <menu class="Menu">
           <ul class="MenuList">
-            {{ if or ($page.IsHome) (eq $page.Kind "term") (eq $page.Section "projects") }}
+            {{ if or ($page.IsHome) (eq $page.Kind "term") (eq $page.Section "portfolio") }}
               <li class="MenuNode"><a aria-current="page" class="MenuLink MenuLink:Current" href="{{ $site.BaseURL }}">Portfolio</a></li>
             {{ else }}
               <li class="MenuNode"><a class="MenuLink" href="{{ $site.BaseURL }}">Portfolio</a></li>
@@ -66,7 +68,7 @@
       </div><!-- .SiteMain -->
       
       <footer class="SiteFooter">
-        <p class="Copy">&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</p>
+        <p class="SiteFooterText">&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</p>
         
         <menu class="Menu">
           <ul class="MenuList">

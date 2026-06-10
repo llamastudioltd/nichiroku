@@ -2,9 +2,20 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <div class="Article">
-    <div class="ArticleBody">
-      {{ $page.Content }}
-    </div><!-- .ArticleBody -->
-  </div><!-- .Article -->
+  <article class="Post">
+    
+    {{ if $page.Title }}
+    <header class="PostHeader">
+      <div class="PostTitles">
+        <h1 class="PostTitle">{{ $page.Title }}</h1>
+      
+        {{ if $page.Params.Subtitle }}
+        <h2 class="PostSubtitle">{{ $page.Params.Subtitle }}</h2>
+        {{ end }}
+      </div><!-- .PostTitles -->
+    </header><!-- .PostHeader -->
+    {{ end }}
+    
+    {{ $page.Content }}
+  </article><!-- .Post -->
 {{ end }}
