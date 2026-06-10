@@ -3,9 +3,13 @@
   {{ $page := . }}
   
   <article class="Post">
-    
-    {{ if $page.Title }}
     <header class="PostHeader">
+      <div class="Meta">
+        <ul class="MetaList">
+          <li class="MetaNode">{{ $page.Type }}</li>
+        </ul><!-- .MetaList -->
+      </div><!-- .Meta -->
+      
       <div class="PostTitles">
         <h1 class="PostTitle">{{ $page.Title }}</h1>
       
@@ -14,8 +18,11 @@
         {{ end }}
       </div><!-- .PostTitles -->
     </header><!-- .PostHeader -->
-    {{ end }}
     
-    {{ $page.Content }}
+    <div class="PostBody">
+      <div class="Copy">
+        {{ $page.Content }}
+      </div><!-- .Copy -->
+    </div><!-- .PostBody -->
   </article><!-- .Post -->
 {{ end }}

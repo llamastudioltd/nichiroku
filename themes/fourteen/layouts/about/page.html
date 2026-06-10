@@ -3,6 +3,8 @@
   {{ $page := . }}
   
   <article class="Post">
-    {{ $page.Content }}
+    <div class="PostBody">
+      <div class="Copy">{{ $page.Content }}</div>
+    </div><!-- .PostBody -->
   </article><!-- .Post -->
 {{ end }}
