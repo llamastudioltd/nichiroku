@@ -1,4 +1,5 @@
 @import "./vendor/reset.css";
+@import "./vendor/variables.css";
 
 @font-face {
   font-display: swap;
@@ -29,23 +30,19 @@
 }
 
 :root {
-  --color-default-strong: oklch(37.2% 0.044 257.287);
-  --color-default: oklch(27.9% 0.041 260.031);
-  --color-default-weak: oklch(20.8% 0.042 265.755);
+  --color-default-strong: var(--color-gray-700);
+  --color-default: var(--color-gray-800);
 
-  --color-default-reverse-strong: oklch(92.9% 0.013 255.508);
-  --color-default-reverse: oklch(98.4% 0.003 247.858);
-  --color-default-reverse-weak: oklch(1 0 0);
+  --color-default-reverse-strong: var(--color-gray-200);
+  --color-default-reverse: var(--color-gray-100);
 
-  --color-default-foreground-strong: oklch(1 0 0);
-  --color-default-foreground: oklch(92.9% 0.013 255.508);
-  --color-default-foreground-weak: oklch(55.4% 0.046 257.417);
+  --color-default-foreground: var(--color-gray-100);
+  --color-default-foreground-weak: var(--color-gray-500);
 
-  --color-default-reverse-foreground-strong: oklch(20.8% 0.042 265.755);
-  --color-default-reverse-foreground: oklch(27.9% 0.041 260.031);
-  --color-default-reverse-foreground-weak: oklch(55.4% 0.046 257.417);
+  --color-default-reverse-foreground: var(--color-gray-800);
+  --color-default-reverse-foreground-weak: var(--color-gray-500);
 
-  --color-current-foreground: oklch(82.8% 0.189 84.429);
+  --color-current-foreground: var(--color-yellow-500);
 
   --font-sans: "Circular", Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
   --font-sans--feature-settings: "ss05" on;
