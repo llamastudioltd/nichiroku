@@ -1,0 +1,24 @@
+{{ define "main" }}
+  {{ $site := $.Site }}
+  {{ $page := . }}
+  
+  <main class="site__main">
+    <div class="page">
+      <header class="page__header">
+       <h1 class="page__title">{{ $page.Title }}</h1>
+      </header><!-- .page__header -->
+      
+      <div class="page__body">
+        {{ with $page.Content }}
+        <div class="copy">
+          {{ . }}
+        </div>
+        {{ end }}
+        
+        {{ with $page.Pages }}
+        {{ partial "posts.html" .ByDate.Reverse }}
+        {{ end }}
+      </div><!-- .page__body -->
+    </div><!-- .page -->
+  </main><!-- .site__main -->
+{{ end }}

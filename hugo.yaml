@@ -1,13 +1,23 @@
 baseURL: https://ben.seku.co/
 locale: en-GB
-title: Ben Sekulowicz-Barclay
-theme: Fourteen
+title: Extravaganza Lime
 
 menus:
-  main:
+  primary:
+  - name: Updates
+    pageRef: /posts
+    weight: 10
+  - name: Books
+    pageRef: /books
+    weight: 20
+  - name: Films
+    pageRef: /films
+    weight: 30
+  
+  secondary:
   - name: About
     pageRef: /about
-    weight: 20
+    weight: 10
   - name: Contact
     url: "mailto:hello@example.com"
-    weight: 30
+    weight: 20

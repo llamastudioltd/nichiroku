@@ -1,0 +1,85 @@
+{{ $site := $.Site }}
+{{ $page := . }}
+
+<!DOCTYPE html>
+<html lang="{{ $site.Language.Locale }}" dir="{{ or $site.Language.Direction `ltr` }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <title>{{ $page.Title | default "Untitled" }} - {{ $site.Title }}</title>
+    
+    <meta content="{{ $site.BaseURL }}humans.txt" name="author">
+    <meta content="{{ $page.Description | default "¿?" }}" name="description">
+    
+    <meta property="og:title" content="{{ $page.Title | default $site.Title }}">
+    <meta property="og:description" content="{{ $page.Description | default "¿?" }}">
+    <meta property="og:locale" content="{{ $site.Language.Locale }}">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="{{ $page.Permalink }}">
+    
+    <link rel="preconnect" href="{{ $site.BaseURL }}">
+    <link rel="dns-prefetch" href="{{ $site.BaseURL }}">
+    
+    {{ with resources.Get "css/screen.css" | css.Build }}
+      {{ if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{ else }}
+      {{ with . | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{ end }}
+      {{ end }}
+    {{ end }}
+    
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png">
+    <link href="/favicon.ico" rel="icon" sizes="32x32">
+    <link href="/icon.svg" rel="icon" type="image/svg+xml">
+  </head>
+  <body>
+    <div class="site">
+      <header class="site__header">
+        <a class="logo" href="{{ $site.BaseURL }}">
+          <svg fill="var(--stone-800)" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+            <path d="M48 0C74.5097 0 96 21.4903 96 48C96 74.5097 74.5097 96 48 96C21.4903 96 0 74.5097 0 48C0 21.4903 21.4903 0 48 0ZM44.5713 16V39.7715L27.7939 22.9482L22.9482 27.7939L39.7715 44.5713H16V51.4287H39.7715L22.9482 68.2061L27.7939 73.0518L44.5713 56.2285V80H51.4287V56.2285L68.2061 73.0518L73.0518 68.2061L56.2285 51.4287H80V44.5713H56.2285L73.0518 27.7939L68.2061 22.9482L51.4287 39.7715V16H44.5713Z" fill="var(--stone-100)" />
+          </svg>
+        </a><!-- .logo -->
+        
+        <menu class="menu">
+          {{ with site.Menus.primary }}
+            <ul class="menu__list">
+              {{ range . }}
+              {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
+              <li class="menu__item"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
+              {{ else }}
+              <li class="menu__item"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
+              {{ end }}
+              {{ end }}
+            </ul><!-- .menu__list -->
+          {{ end }}
+          
+          {{ with site.Menus.secondary }}
+            <ul class="menu__list">
+              {{ range . }}
+              {{ if ($page.IsMenuCurrent .Menu .) }}
+              <li class="menu__item"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
+              {{ else }}
+              <li class="menu__item"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
+              {{ end }}
+              {{ end }}
+            </ul><!-- .menu__list -->
+          {{ end }}
+        </menu><!-- .menu -->
+      </header><!-- .site__header -->
+      
+      {{ block "main" $page }}
+        <!-- ? -->
+      {{ end }}
+      
+      <footer class="site__footer">
+        <p>&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</p>
+      </footer><!-- .site__footer -->
+    </div>
+  </body>
+</html>

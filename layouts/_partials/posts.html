@@ -1,0 +1,11 @@
+{{ $pages := . }}
+
+{{ with $pages }}
+<div class="posts">
+  <table class="posts__table">
+    {{ range . }}
+    {{ partial "posts__row.html" . }}
+    {{ end }}
+  </table><!-- .posts__table -->
+</div><!-- .posts -->
+{{ end }}
