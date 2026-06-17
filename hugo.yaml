@@ -4,9 +4,6 @@ title: Extravaganza Lime
 
 menus:
   primary:
-  - name: Updates
-    pageRef: /posts
-    weight: 10
   - name: Books
     pageRef: /books
     weight: 20
@@ -15,9 +12,6 @@ menus:
     weight: 30
   
   secondary:
-  - name: About
-    pageRef: /about
-    weight: 10
   - name: Contact
     url: "mailto:hello@example.com"
-    weight: 20
+    weight: 90
