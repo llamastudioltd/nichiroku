@@ -2,25 +2,26 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <main class="site__main">
-    <div class="page">
-      <header class="page__header">
-       <h1 class="page__title">Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
-      </header><!-- .page__header -->
-      
-      <div class="page__body">
-        {{ with $page.Content }}
+  <div class="page">
+    <header class="page__menu">
+      <h1 class="page__title">Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
+    </header><!-- .page__menu -->
+    <div class="page__main">
+      {{ with $page.Content }}
+      <div class="section">
         <div class="copy">
           {{ . }}
         </div>
-        {{ end }}
-        
-        {{ with $page.Pages }}
-        <div class="posts">
+      </div><!-- .section -->
+      {{ end }}
+      
+      {{ with $page.Pages }}
+      <div class="section">
+        <div class="section__wrap">
           {{ partial "posts/table.html" .ByDate.Reverse }}
-        </div><!-- .posts -->
-        {{ end }}
-      </div><!-- .page__body -->
-    </div><!-- .page -->
-  </main><!-- .site__main -->
+        </div><!-- .section__wrap -->
+      </div><!-- .section -->
+      {{ end }}
+    </div><!-- .page__main -->
+  </div><!-- .page -->
 {{ end }}

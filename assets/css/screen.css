@@ -1,4 +1,5 @@
-@import "./vendor/reset.css";
+@import "./vendor/resets.css";
+@import "./vendor/animations.css";
 @import "./vendor/variables.css";
 
 @font-face {
@@ -18,13 +19,13 @@
 }
 
 :root {
-  --font-sans: "Diatype", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans--feature-settings: "ss01" on, "ss05" on, "ss10" on, "ss11" on;
+  --font-sans: "Whyte", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  //--font-sans--feature-settings: "ss01" off, "ss05" off, "ss10" off, "ss11" off;
 
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
+  --font-normal: 350;
+  --font-medium: 450;
+  --font-semibold: 550;
+  --font-bold: 650;
 
   --text-xs: 0.6875rem;
   --text-xs--line-height: 1.5;
@@ -39,6 +40,7 @@
   --text-xl--line-height: 1.5;
 
   --transition-duration-md: 0.15s;
+  --transition-duration-lg: 0.3s;
 }
 
 html {
@@ -81,7 +83,8 @@ i {
   font-style: inherit;
 }
 
-img {
+img,
+svg {
   display: block;
   height: auto;
   width: 100%;
@@ -95,23 +98,23 @@ table {
   td,
   th {
     border-block-end: solid 1px var(--color-stone-200);
+    padding: 0.75rem 1.5rem;
     white-space: nowrap;
 
-    padding: 0.75rem 1.5rem;
 
     @media (width>=768px) {
       padding-inline: 3rem;
     }
-  }
 
-  td:first-child,
-  th:first-child {
-    padding-inline-start: 0;
-  }
+    @media (width>=1536px) {
+      &:first-child {
+        padding-inline-start: 0;
+      }
 
-  td:last-child,
-  th:last-child {
-    padding-inline-end: 0;
+      &:last-child {
+        padding-inline-end: 0;
+      }
+    }
   }
 
 
@@ -122,101 +125,134 @@ table {
 }
 
 /*
- * Copy
- * 
- * 
- */
-
-.copy {
-
-  p,
-  dl,
-  ol,
-  ul {
-    text-align: left;
-    text-wrap: pretty;
-
-    @media (width>=768px) {
-      text-align: justify;
-    }
-  }
-}
-
-/*
- * Logo
+ * LOGO
  * 
  * 
  */
 
 .logo {
+  color: var(--color-stone-800);
+
   align-items: center;
   display: flex;
+  height: 1.5rem;
   justify-content: center;
+  width: 1.5rem;
 
   svg {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 80%;
+    width: 80%;
   }
 }
 
-.site__header .logo {
-  align-self: flex-start;
-}
-
 /*
- * Menu
+ * MENU
  * 
  * 
  */
 
-.menu {
-  align-items: center;
-  display: flex;
-  gap: 1.5rem;
-  justify-content: space-between;
-
-  @media (width>=640px) {
-    gap: 3rem;
-  }
-}
-
-.site__header .menu {
-  align-self: flex-start;
-}
-
+.menu,
 .menu__list {
   align-items: center;
   display: flex;
+  justify-content: flex-start;
+}
+
+.menu {
+  gap: 3rem;
+}
+
+.menu__list {
   gap: 1.5rem;
-  justify-content: space-between;
+}
+
+.menu__node {
+  /* ? */
 }
 
 .menu__link {
   color: var(--color-stone-500);
   text-decoration: none;
+  transition-duration: var(--transition-duration-md);
+  transition-property: color;
 
-  &:hover,
-  &.menu__link--current {
+  &:hover {
     color: var(--color-stone-800);
   }
 }
 
+.menu__link--current {
+  color: var(--color-stone-800);
+  font-weight: var(--font-medium);
+}
+
 /*
- * Page
+ * META
+ * 
+ * 
+ */
+
+.meta {
+  /* ? */
+}
+
+.meta__list {
+  /* ? */
+}
+
+.meta__node {
+  /* ? */
+}
+
+.meta__link {
+  /* ? */
+}
+
+/*
+ * SECTION
+ * 
+ * 
+ */
+
+.section {
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: 3rem;
+
+  >* {
+    grid-column: 2/-2;
+  }
+}
+
+.section__wrap {
+  grid-column: 1/-1;
+  overflow-x: auto;
+
+  @media (width>=1536px) {
+    grid-column: 2/-2;
+  }
+}
+
+/*
+ * PAGE
  * 
  * 
  */
 
 .page {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  justify-content: flex-start;
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: auto 3rem 1fr;
 }
 
-.page__header {
-  /* ? */
+.page__menu {
+  grid-column: 2/-2;
+  grid-row: 1/2;
 }
 
 .page__title {
@@ -226,94 +262,68 @@ table {
   line-height: var(--text-xl--line-height);
 }
 
-.page__body {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  justify-content: flex-start;
+.page__main {
+  align-self: start;
+  grid-column: 1/-1;
+  grid-row: 3/4;
+
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: 3rem;
 }
 
 /*
- * Site
+ * SITE
  * 
  * 
  */
 
 .site {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-  justify-content: flex-start;
-  min-height: calc(100vh - (1.5rem + 1.5rem));
-  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 1.5rem 1fr 1.5rem 1fr 1.5rem 1fr 1.5rem;
+  grid-template-rows: 1.5rem auto 6rem 1fr 12rem auto 1.5rem;
+  margin-inline: auto;
+  max-width: 1536px;
+  min-height: 100vh;
 
   @media (width>=768px) {
-    min-height: calc(100vh - (3rem + 3rem));
-    padding: 3rem;
+    grid-template-columns: 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem;
+    grid-template-rows: 3rem auto 6rem 1fr 12rem auto 3rem;
   }
 
-  @media (width>=1536px) {
-    margin-inline: auto;
-    width: calc(1536px - (3rem + 3rem));
+  @media (width>=1024px) {
+    grid-template-columns: 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem 1fr 3rem;
   }
 }
 
-.site__header,
-.site__main,
-.site__footer {
-  align-items: stretch;
+.site__menu {
+  grid-column: 2/-2;
+  grid-row: 2/3;
+
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   gap: 3rem;
   justify-content: flex-start;
-}
-
-.site__header {
-  flex-grow: 0;
 
   @media (width>=640px) {
     align-items: center;
     flex-direction: row;
-    gap: 3rem;
     justify-content: space-between;
   }
 }
 
 .site__main {
-  flex-grow: 1;
+  grid-column: 1/-1;
+  grid-row: 4/5;
+
+  display: grid;
+  grid-template-columns: subgrid;
 }
 
-.site__footer {
-  flex-grow: 0;
-}
-
-.site__main+.site__footer {
-  padding-top: 6rem;
-}
-
-/*
- * Posts
- * 
- * 
- */
-
-.posts {
-  margin-inline: -1.5rem;
-  padding-inline: 1.5rem;
-  overflow-x: auto;
-  width: calc(100vw - (1.5rem + 1.5rem));
-
-  @media (width>=768px) {
-    margin-inline: -3rem;
-    padding-inline: 3rem;
-    width: calc(100vw - (3rem + 3rem));
-  }
-
-  @media (width>=1536px) {
-    width: 1536px;
-  }
+.site__meta {
+  grid-column: 2/-2;
+  grid-row: 6/7;
 }
 
 /*

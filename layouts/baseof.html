@@ -39,12 +39,12 @@
   </head>
   <body>
     <div class="site">
-      <header class="site__header">
+      <div class="site__menu">
         <a class="logo" href="{{ $site.BaseURL }}">
           <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M42.8571 96V60.3429L17.6914 85.5771L10.4229 78.3086L35.6571 53.1429H0V42.8571H35.6571L10.4229 17.6914L17.6914 10.4229L42.8571 35.6571V0H53.1429V35.6571L78.3086 10.4229L85.5771 17.6914L60.3429 42.8571H96V53.1429H60.3429L85.5771 78.3086L78.3086 85.5771L53.1429 60.3429V96H42.8571Z" fill="currentColor"/>
+            <path d="M42.8571 96V60.3429L17.6914 85.5771L10.4229 78.3086L35.6571 53.1429H0V42.8571H35.6571L10.4229 17.6914L17.6914 10.4229L42.8571 35.6571V0H53.1429V35.6571L78.3086 10.4229L85.5771 17.6914L60.3429 42.8571H96V53.1429H60.3429L85.5771 78.3086L78.3086 85.5771L53.1429 60.3429V96H42.8571Z" fill="currentColor"/>
           </svg>
-        </a><!-- .logo -->
+        </a>
         
         <menu class="menu">
           {{ with site.Menus.primary }}
@@ -71,15 +71,21 @@
             </ul><!-- .menu__list -->
           {{ end }}
         </menu><!-- .menu -->
-      </header><!-- .site__header -->
+      </div><!-- .site__menu -->
       
-      {{ block "main" $page }}
+      <div class="site__main">
+        {{ block "main" $page }}
         <!-- ? -->
-      {{ end }}
+        {{ end }}
+      </div><!-- .site__main -->
       
-      <footer class="site__footer">
-        <p>&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</p>
-      </footer><!-- .site__footer -->
-    </div>
+      <div class="site__meta">
+        <div class="meta">
+          <ul class="meta__list">
+            <li class="meta__node">&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</li>
+          </ul><!-- .meta__list -->
+        </div><!-- .meta -->
+      </div><!-- .site__meta -->
+    </div><!-- .site -->
   </body>
 </html>
