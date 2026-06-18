@@ -18,8 +18,8 @@
 }
 
 :root {
-  --font-sans: "Whyte", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans--feature-settings: "ss01" on;
+  --font-sans: "Diatype", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans--feature-settings: "ss01" on, "ss05" on, "ss10" on, "ss11" on;
 
   --font-normal: 400;
   --font-medium: 500;
@@ -44,15 +44,15 @@
 html {
   font-size: 14px;
 
-  @media (width >=400px) {
+  @media (width>=400px) {
     font-size: round(down, clamp(14px, 0.6033rem + 1.0870vw, 18px), 1px);
   }
 
-  @media (width >=1280px) {
+  @media (width>=1280px) {
     font-size: round(down, clamp(18px, 0.1875rem + 1.1719vw, 21px), 1px);
   }
 
-  @media (width >=1536px) {
+  @media (width>=1536px) {
     font-size: 21px;
   }
 }
@@ -85,6 +85,61 @@ img {
   display: block;
   height: auto;
   width: 100%;
+}
+
+table {
+  border-block-start: solid 1px var(--color-stone-200);
+  border-collapse: collapse;
+  width: 100%;
+
+  td,
+  th {
+    border-block-end: solid 1px var(--color-stone-200);
+    white-space: nowrap;
+
+    padding: 0.75rem 1.5rem;
+
+    @media (width>=768px) {
+      padding-inline: 3rem;
+    }
+  }
+
+  td:first-child,
+  th:first-child {
+    padding-inline-start: 0;
+  }
+
+  td:last-child,
+  th:last-child {
+    padding-inline-end: 0;
+  }
+
+
+  th {
+    text-align: left;
+    width: 100%
+  }
+}
+
+/*
+ * Copy
+ * 
+ * 
+ */
+
+.copy {
+
+  p,
+  dl,
+  ol,
+  ul {
+    text-align: left;
+    text-wrap: pretty;
+
+    @media (width>=768px) {
+      text-align: justify;
+    }
+  }
 }
 
 /*
@@ -120,7 +175,7 @@ img {
   gap: 1.5rem;
   justify-content: space-between;
 
-  @media (width >=640px) {
+  @media (width>=640px) {
     gap: 3rem;
   }
 }
@@ -143,27 +198,6 @@ img {
   &:hover,
   &.menu__link--current {
     color: var(--color-stone-800);
-  }
-}
-
-/*
- * Copy
- * 
- * 
- */
-
-.copy {
-
-  p,
-  dl,
-  ol,
-  ul {
-    text-align: left;
-    text-wrap: pretty;
-
-    @media (width >=640px) {
-      text-align: justify;
-    }
   }
 }
 
@@ -215,12 +249,12 @@ img {
   min-height: calc(100vh - (1.5rem + 1.5rem));
   padding: 1.5rem;
 
-  @media (width >=640px) {
+  @media (width>=768px) {
     min-height: calc(100vh - (3rem + 3rem));
     padding: 3rem;
   }
 
-  @media (width >=1536px) {
+  @media (width>=1536px) {
     margin-inline: auto;
     width: calc(1536px - (3rem + 3rem));
   }
@@ -239,7 +273,7 @@ img {
 .site__header {
   flex-grow: 0;
 
-  @media (width >=640px) {
+  @media (width>=640px) {
     align-items: center;
     flex-direction: row;
     gap: 3rem;
@@ -267,43 +301,19 @@ img {
 
 .posts {
   margin-inline: -1.5rem;
+  padding-inline: 1.5rem;
   overflow-x: auto;
-  width: 100vw;
+  width: calc(100vw - (1.5rem + 1.5rem));
 
-  @media (width>=640px) {
+  @media (width>=768px) {
     margin-inline: -3rem;
+    padding-inline: 3rem;
+    width: calc(100vw - (3rem + 3rem));
   }
 
-  @media (width >=1536px) {
+  @media (width>=1536px) {
     width: 1536px;
   }
-}
-
-.posts__table {
-  border-block-start: solid 1px var(--color-stone-200);
-  border-collapse: collapse;
-
-  width: 100%;
-}
-
-.posts__cell {
-  border-block-end: solid 1px var(--color-stone-200);
-  white-space: nowrap;
-
-  padding: 0.75rem 1.5rem;
-
-  @media (width >=640px) {
-    padding-inline: 3rem;
-  }
-}
-
-th.posts__cell {
-  text-align: left;
-  width: 100%
-}
-
-.posts__cell:last-child {
-  /* ? */
 }
 
 /*

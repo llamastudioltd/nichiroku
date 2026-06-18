@@ -1,13 +1,13 @@
 {{ $page := . }}
 
-<tr class="posts__row">
+<tr>
   {{ if eq $page.Type "Bookmark" }}
-  <th class="posts__cell">
+  <th>
     <a href="{{ $page.Params.Url }}">{{ $page.Title }}</a> via <a href="{{ $page.Params.Source.Url }}">{{ $page.Params.Source.Title }}</a>
-  </th><!-- .posts__cell -->
+  </th>
   {{ end }}
   
-  <td class="posts__cell">
+  <td>
     {{ with $page.GetTerms "tags" }}
     <div class="terms">
       <ul class="terms__list">
@@ -19,9 +19,9 @@
       </ul><!-- terms__list -->
     </div><!-- .terms -->
   {{ end }}
-  </td><!-- .posts__cell -->
+  </td>
   
-  <td class="posts__cell">
+  <td>
     {{ time.Format "02 January 2006" $page.Date }}
-  </td><!-- .posts__cell -->
-</tr><!-- .posts__row -->
+  </td>
+</tr>

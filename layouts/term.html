@@ -16,7 +16,9 @@
         {{ end }}
         
         {{ with $page.Pages }}
-        {{ partial "posts.html" .ByDate.Reverse }}
+        <div class="posts">
+          {{ partial "posts/table.html" .ByDate.Reverse }}
+        </div><!-- .posts -->
         {{ end }}
       </div><!-- .page__body -->
     </div><!-- .page -->
