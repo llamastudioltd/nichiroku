@@ -1,6 +1,7 @@
 baseURL: https://ben.seku.co/
 locale: en-GB
 title: Extravaganza Lime
+theme: Fourteen
 
 menus:
   primary:

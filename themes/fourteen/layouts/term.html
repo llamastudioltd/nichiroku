@@ -6,21 +6,20 @@
     <header class="page__menu">
       <h1 class="page__title">Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
     </header><!-- .page__menu -->
+    
     <div class="page__main">
       {{ with $page.Content }}
-      <div class="section">
-        <div class="copy">
-          {{ . }}
-        </div>
-      </div><!-- .section -->
+      <div class="copy">
+        {{ . }}
+      </div><!-- .copy -->
       {{ end }}
       
       {{ with $page.Pages }}
-      <div class="section">
-        <div class="section__wrap">
+      <div class="copy">
+        <div class="overflow">
           {{ partial "posts/table.html" .ByDate.Reverse }}
-        </div><!-- .section__wrap -->
-      </div><!-- .section -->
+        </div><!-- .overflow -->
+      </div><!-- .copy -->
       {{ end }}
     </div><!-- .page__main -->
   </div><!-- .page -->

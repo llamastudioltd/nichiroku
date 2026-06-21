@@ -7,7 +7,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
-    <title>{{ $page.Title | default "Untitled" }} - {{ $site.Title }}</title>
+    <title>
+      {{ if $page.IsHome }}
+        {{ $site.Title }}
+      {{ else }}
+        {{ $page.Title }} – {{ $site.Title }}
+      {{ end }}
+    </title>
     
     <meta content="{{ $site.BaseURL }}humans.txt" name="author">
     <meta content="{{ $page.Description | default "¿?" }}" name="description">
@@ -19,9 +25,6 @@
     <meta property="og:type" content="website">
     
     <link rel="canonical" href="{{ $page.Permalink }}">
-    
-    <link rel="preconnect" href="{{ $site.BaseURL }}">
-    <link rel="dns-prefetch" href="{{ $site.BaseURL }}">
     
     {{ with resources.Get "css/screen.css" | css.Build }}
       {{ if hugo.IsDevelopment }}
@@ -51,9 +54,9 @@
             <ul class="menu__list">
               {{ range . }}
               {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
-              <li class="menu__item"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="menu__node"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
               {{ else }}
-              <li class="menu__item"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="menu__node"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
               {{ end }}
               {{ end }}
             </ul><!-- .menu__list -->
@@ -63,9 +66,9 @@
             <ul class="menu__list">
               {{ range . }}
               {{ if ($page.IsMenuCurrent .Menu .) }}
-              <li class="menu__item"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="menu__node"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
               {{ else }}
-              <li class="menu__item"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
+              <li class="menu__node"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
               {{ end }}
               {{ end }}
             </ul><!-- .menu__list -->
@@ -82,7 +85,7 @@
       <div class="site__meta">
         <div class="meta">
           <ul class="meta__list">
-            <li class="meta__node">&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}</li>
+            <li class="meta__node">&copy; Ben Sekulowicz-Barclay, 2004&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}.</li>
           </ul><!-- .meta__list -->
         </div><!-- .meta -->
       </div><!-- .site__meta -->

@@ -3,7 +3,10 @@
 <tr>
   {{ if eq $page.Type "Bookmark" }}
   <th>
-    <a href="{{ $page.Params.Url }}">{{ $page.Title }}</a> via <a href="{{ $page.Params.Source.Url }}">{{ $page.Params.Source.Title }}</a>
+    <a href="{{ $page.Params.Url }}">{{ $page.Title }}</a> 
+    {{ if $page.Params.Source }}
+    via <a href="{{ $page.Params.Source.Url }}">{{ $page.Params.Source.Title }}</a>
+    {{ end }}
   </th>
   {{ end }}
   
@@ -12,9 +15,9 @@
     <div class="terms">
       <ul class="terms__list">
         {{ range . }}
-        <li class="terms__item">
+        <li class="terms__node">
           <a class="terms__link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        </li><!-- .terms__item -->
+        </li><!-- .terms__node -->
         {{ end }}
       </ul><!-- terms__list -->
     </div><!-- .terms -->

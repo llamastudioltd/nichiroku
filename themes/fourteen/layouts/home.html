@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ $site := $.Site }}
+  {{ $page := . }}
+  
+  <div class="page">
+    <div class="page__main">
+      {{ with $page.Content }}
+      <div class="copy">
+        {{ . }}
+      </div><!-- .copy -->
+      {{ end }}
+    </div><!-- .page__main -->
+  </div><!-- .page -->
+{{ end }}
