@@ -42,39 +42,15 @@
   </head>
   <body>
     <div class="site">
-      <div class="site__menu">
-        <a class="logo" href="{{ $site.BaseURL }}">
-          <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M42.8571 96V60.3429L17.6914 85.5771L10.4229 78.3086L35.6571 53.1429H0V42.8571H35.6571L10.4229 17.6914L17.6914 10.4229L42.8571 35.6571V0H53.1429V35.6571L78.3086 10.4229L85.5771 17.6914L60.3429 42.8571H96V53.1429H60.3429L85.5771 78.3086L78.3086 85.5771L53.1429 60.3429V96H42.8571Z" fill="currentColor"/>
-          </svg>
-        </a>
-        
-        <menu class="menu">
-          {{ with site.Menus.primary }}
-            <ul class="menu__list">
-              {{ range . }}
-              {{ if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
-              <li class="menu__node"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
-              {{ else }}
-              <li class="menu__node"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
-              {{ end }}
-              {{ end }}
-            </ul><!-- .menu__list -->
-          {{ end }}
-          
-          {{ with site.Menus.secondary }}
-            <ul class="menu__list">
-              {{ range . }}
-              {{ if ($page.IsMenuCurrent .Menu .) }}
-              <li class="menu__node"><a aria-current="page" class="menu__link menu__link--current" href="{{ .URL }}">{{ .Name }}</a></li>
-              {{ else }}
-              <li class="menu__node"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
-              {{ end }}
-              {{ end }}
-            </ul><!-- .menu__list -->
-          {{ end }}
-        </menu><!-- .menu -->
-      </div><!-- .site__menu -->
+      {{ if ne .IsHome true }}
+        div class="site__menu">
+          <a class="logo" href="{{ $site.BaseURL }}">
+            <svg fill="none" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.04167 19.8333V12.021L3.52683 17.5537L2.27967 16.3065L7.81229 10.7917H0V9.04167H7.81229L2.27967 3.52683L3.52683 2.29075L9.04167 7.82337V0H10.7917V7.82337L16.3065 2.29075L17.5426 3.52683L12.01 9.04167H19.8333V10.7917H12.01L17.5426 16.3065L16.3065 17.5537L10.7917 12.021V19.8333H9.04167Z" fill="currentColor"/>
+            </svg>
+          </a>
+        </div><!-- .site__menu -->
+      {{ end }}
       
       <div class="site__main">
         {{ block "main" $page }}
