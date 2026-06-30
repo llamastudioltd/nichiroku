@@ -3,20 +3,16 @@
   {{ $page := . }}
   
   <div class="grid">
-    <ul class="grid__list">
-      {{ with $page }}
-      <li class="grid__node">
-        <a class="info" href="/about">
-          <h1 class="info__title">{{ .Content }}</h1>
-        </a><!-- .info -->
-      </li><!-- .grid__node -->
-      {{ end }}
-      
+    <div class="grid__main">
+      <!-- 
+      <a class="info" href="/about">
+        <h1 class="info__title">{{ .Content }}</h1>
+      </a>
+      .info -->
+    
       {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "posts") }}
-      <li class="grid__node">
-        {{ partial "post.html" . }}
-      </li><!-- .grid__node -->
+      {{ partial "post.html" . }}
       {{ end }}
-    </ul><!-- .grid__list -->
+    </div><!-- .grid__main -->
   </div><!-- .grid -->
 {{ end }}

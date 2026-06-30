@@ -5,11 +5,11 @@ theme: Fourteen
 
 menus:
   primary:
-  - name: Books
-    pageRef: /books
+  - name: Photos
+    pageRef: /photos
     weight: 20
-  - name: Films
-    pageRef: /films
+  - name: Places
+    pageRef: /places
     weight: 30
   
   secondary:
