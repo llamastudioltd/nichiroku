@@ -2,25 +2,17 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <div class="page">
-    <header class="page__menu">
-      <h1 class="page__title">Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
-    </header><!-- .page__menu -->
+  <div class="grid">
+    <header class="grid__header">
+      <h1 class="grid__title">Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
+    </header><!-- .grid__header -->
     
-    <div class="page__main">
-      {{ with $page.Content }}
-      <div class="copy">
-        {{ . }}
-      </div><!-- .copy -->
+    {{ with $page.Pages.ByDate.Reverse }}
+    <div class="grid__main">
+      {{ range . }}
+      {{ partial "post.html" . }}
       {{ end }}
-      
-      {{ with $page.Pages }}
-      <div class="copy">
-        <div class="overflow">
-          {{ partial "posts/table.html" .ByDate.Reverse }}
-        </div><!-- .overflow -->
-      </div><!-- .copy -->
-      {{ end }}
-    </div><!-- .page__main -->
-  </div><!-- .page -->
+    </div><!-- .grid__main -->
+    {{ end }}
+  </div><!-- .grid -->
 {{ end }}

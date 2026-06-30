@@ -3,10 +3,37 @@
   {{ $page := . }}
   
   <div class="page">
+    {{ if eq $page.Section "posts" }}
+    <header class="page__header">
+      <h1 class="page__title">{{ $page.Title }}</h1>
+      <h2 class="page__subtitle">
+        <time>{{ time.Format "02 January 2006" $page.Date }}</time>
+      </h2>
+    </header><!-- .page__header -->
+    {{ end }}
+    
+    {{ with $page.Content }}
     <div class="page__main">
-      {{ with $page.Content }}
-      {{ . }}
-      {{ end }}
+      <div class="copy">
+        {{ . }}
+      </div><!-- .copy -->
     </div><!-- .page__main -->
+    {{ end }}
+    
+    {{ if eq $page.Section "posts" }}
+    <footer class="page__footer">
+      {{ with $page.GetTerms "tags" }}
+        <div class="terms">
+          <ul class="terms__list">
+            {{ range . }}
+            <li class="terms__item">
+              <a class="terms__link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            </li><!-- .terms__item -->
+            {{ end }}
+          </ul><!-- terms__list -->
+        </div><!-- .terms -->
+      {{ end }}
+    </footer><!-- .page__footer -->
+    {{ end }}
   </div><!-- .page -->
 {{ end }}
