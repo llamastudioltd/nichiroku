@@ -2,17 +2,9 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <div class="grid">
-    <div class="grid__main">
-      <!-- 
-      <a class="info" href="/about">
-        <h1 class="info__title">{{ .Content }}</h1>
-      </a>
-      .info -->
-    
-      {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "posts") }}
-      {{ partial "post.html" . }}
-      {{ end }}
-    </div><!-- .grid__main -->
-  </div><!-- .grid -->
+  <menu class="grid">
+    {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "notes") }}
+    {{ partial "grid__item.html" . }}
+    {{ end }}
+  </menu><!-- .grid -->
 {{ end }}

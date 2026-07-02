@@ -4,15 +4,71 @@ title: Extravaganza Lime
 theme: Fourteen
 
 menus:
-  primary:
-  - name: Photos
-    pageRef: /photos
+  footer:
+  - name: Content
+    weight: 10
+  - name: Notes
+    parent: Content
+    url: "/notes"
+    weight: 10
+  - name: Images
+    parent: Content
+    url: "/images"
     weight: 20
   - name: Places
-    pageRef: /places
+    parent: Content
+    url: "/places"
     weight: 30
+  - name: Information
+    weight: 20
+  - name: About
+    parent: Information
+    url: "/about"
+    weight: 10  
+  - name: Colophon
+    parent: Information
+    url: "/colophon"
+    weight: 20  
+  - name: Now
+    parent: Information
+    url: "/now"
+    weight: 30  
+  - name: Subscribe
+    weight: 30
+  - name: RSS
+    parent: Subscribe
+    url: "/feed.xml"
+    weight: 10  
+  - name: Get in touch
+    weight: 40
+  - name: Email
+    parent: Get in touch
+    url: "mailto:ben@seku.co"
+    weight: 10 
+  - name: Mastodon
+    parent: Get in touch
+    url: "https://mastodon.design/@beseku"
+    weight: 20 
+  - name: LinkedIn
+    parent: Get in touch
+    url: "https://www.linkedin.com/in/beseku/"
+    weight: 30  
+  - name: Elsewhere
+    weight: 50
+  - name: Flickr
+    parent: Elsewhere
+    url: "https://www.flickr.com/photos/beseku/"
+    weight: 10
+  - name: Goodreads
+    parent: Elsewhere
+    url: "https://www.goodreads.com/user/show/102467163-ben"
+    weight: 20
+  - name: Last.fm
+    parent: Elsewhere
+    url: "https://www.last.fm/user/beseku"
+    weight: 30
+  - name: Letterboxd
+    parent: Elsewhere
+    url: "https://letterboxd.com/beseku/"
+    weight: 40
   
-  secondary:
-  - name: Contact
-    url: "mailto:hello@example.com"
-    weight: 90

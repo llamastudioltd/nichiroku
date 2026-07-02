@@ -1,8 +1,0 @@
-{{ $page := . }}
-
-<a class="post" href="{{ $page.Permalink }}">
-  <h1 class="post__title">{{ $page.Title }}</h1>
-  <h2 class="post__subtitle">
-    <time>{{ time.Format "02 January 2006" $page.Date }}</time>
-  </h2>
-</a><!-- .post -->

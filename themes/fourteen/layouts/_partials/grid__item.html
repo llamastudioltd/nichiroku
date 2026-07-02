@@ -1,0 +1,10 @@
+{{ $page := . }}
+
+<li class="grid__item grid__item--{{ lower $page.Section }}">
+  <a class="grid__link" href="{{ $page.Permalink }}">
+    <h1 class="grid__title">{{ $page.Title }}</h1>
+    <h2 class="grid__subtitle">
+      <time>{{ time.Format "02 January 2006" $page.Date }}</time>
+    </h2>
+  </a><!-- .grid__link -->
+</li><!-- .grid__item -->

@@ -2,17 +2,9 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <div class="grid">
-    <header class="grid__header">
-      <h1 class="grid__title">Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
-    </header>
-    
-    {{ with $page.Pages.ByDate.Reverse }}
-    <div class="grid__main">
-      {{ range . }}
-      {{ partial "post.html" . }}
-      {{ end }}
-    </div><!-- .grid__main -->
+  <menu class="grid">
+    {{ range $page.Pages.ByDate.Reverse }}
+    {{ partial "grid__item.html" . }}
     {{ end }}
-  </div><!-- .grid -->
+  </menu><!-- .grid -->
 {{ end }}
