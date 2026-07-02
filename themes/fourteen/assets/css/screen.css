@@ -85,6 +85,11 @@
 
 html {
   font-size: clamp(15px, 0.8715rem + 0.2641vw, 18px);
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -92,9 +97,6 @@ body {
   color: var(--color-foreground-default);
   font: normal var(--font-normal) var(--text-md) / var(--text-md--line-height) var(--font-sans);
   font-feature-settings: var(--font-sans--feature-settings);
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -338,10 +340,6 @@ a.grid__link {
 
   figcaption {
     color: var(--color-foreground-default-weak);
-
-    @media (width>=768px) {
-      font: normal var(--font-normal) var(--text-sm) / var(--text-sm--line-height) var(--font-sans);
-    }
   }
 }
 
