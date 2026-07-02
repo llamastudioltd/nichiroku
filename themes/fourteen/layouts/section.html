@@ -2,9 +2,9 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <menu class="grid">
+  <ol class="grid">
     {{ range $page.Pages.ByDate.Reverse }}
     {{ partial "grid__item.html" . }}
     {{ end }}
-  </menu><!-- .grid -->
+  </ol><!-- .grid -->
 {{ end }}

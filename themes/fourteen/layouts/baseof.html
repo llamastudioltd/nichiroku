@@ -56,12 +56,12 @@
         {{ end }}
       </main><!-- .site__main -->
       
-      <footer class="site__menu">
+      <footer class="site__footer">
         <div class="copy">
-          <p>Ben is a designer and builder of digital things. Based in Valencia. Former inhabitant of Sidcup, Tokyo and London. Good with swords.</p>
+          <p>Ben Sekulowicz is a designer and builder of digital things. Based in Valencia. Former inhabitant of Sidcup, Tokyo and London. Good with swords.</p>
         </div>
         
-        <div class="menu">
+        <menu class="menu">
           {{ range $site.Menus.footer }}
           <li class="menu__item">
             <h1 class="menu__title">{{ .Name }}</h1>
@@ -73,12 +73,12 @@
             </menu><!-- .menu__list -->
           </li><!-- .menu__item -->
           {{ end }}
-        </div><!-- .menu -->
+        </menu><!-- .menu -->
         
         <div class="copy">
           <p>Copyright &copy; 2006&thinsp;&ndash;&thinsp;{{ time.Now | time.Format "2006" }}. Made with <a href="https://nova.app">Nova</a>, <a href="https://gohugo.io/">Hugo</a> and <a href="https://favcoffee.es">Coffee</a>.</p>
         </div>
-      </footer><!-- .site__menu -->
+      </footer><!-- .site__footer -->
     </div><!-- .site -->
   </body>
 </html>

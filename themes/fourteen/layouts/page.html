@@ -2,7 +2,7 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <div class="page">
+  <article class="page">
     <header class="page__header">
       <menu class="meta">
         <li class="meta__item">
@@ -28,14 +28,14 @@
     
     {{ with $page.GetTerms "tags" }}
     <footer class="page__footer">
-      <div class="terms">
+      <ul class="terms">
         {{ range . }}
         <li class="terms__item">
           <a class="terms__link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         </li><!-- .terms__item -->
         {{ end }}
-      </div><!-- .terms -->
+      </ul><!-- .terms -->
     </footer><!-- .page__footer -->
     {{ end }}
-  </div><!-- .page -->
+  </article><!-- .page -->
 {{ end }}
