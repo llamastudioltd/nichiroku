@@ -66,12 +66,6 @@
   --text-xl: calc(var(--text-lg) * var(--scale));
   --text-xl--line-height: 1.2;
 
-  --text-2xl: calc(var(--text-xl) * var(--scale));
-  --text-2xl--line-height: 1.2;
-
-  --text-3xl: calc(var(--text-2xl) * var(--scale));
-  --text-3xl--line-height: 1.2;
-
   --transition-duration-md: 0.15s;
   --transition-duration-lg: 0.3s;
 
@@ -81,7 +75,7 @@
   --gap-lg: 3rem;
   --gap-xl: 6rem;
 
-  --scale: var(--scale-major-second);
+  --scale: var(--scale-minor-third);
   --stroke: 1px;
 }
 
@@ -90,23 +84,7 @@
 }
 
 html {
-  font-size: 14px;
-
-  @media (width>=400px) {
-    cssfont-size: clamp(14px, 0.7391rem + 0.5435vw, 16px)
-  }
-
-  @media (width>=768px) {
-    font-size: 16px;
-  }
-
-  @media (width>=1024px) {
-    font-size: clamp(16px, 0.75rem + 0.3906vw, 18px);
-  }
-
-  @media (width>=1536px) {
-    font-size: 18px;
-  }
+  font-size: clamp(15px, 0.8715rem + 0.2641vw, 18px);
 }
 
 body {
@@ -283,7 +261,7 @@ a.grid__link {
 }
 
 .page__title {
-  font: normal var(--font-medium) var(--text-3xl) / var(--text-3xl--line-height) var(--font-sans);
+  font: normal var(--font-medium) var(--text-xl) / var(--text-xl--line-height) var(--font-sans);
   text-wrap: balance;
 }
 
@@ -342,7 +320,7 @@ a.grid__link {
   h4,
   h5,
   h6 {
-    font: normal var(--font-medium) var(--text-xl) / var(--text-xl--line-height) var(--font-sans);
+    font: normal var(--font-medium) var(--text-lg) / var(--text-lg--line-height) var(--font-sans);
     margin-block-start: var(--gap-sm);
     text-wrap: balance;
   }
@@ -475,10 +453,8 @@ a.grid__link {
 }
 
 .terms__link {
-  background-color: transparent;
   border: solid var(--stroke) var(--color-stroke-default);
   border-radius: 999px;
-  color: var(--color-foreground-default);
   align-items: center;
   display: flex;
   font: normal var(--font-normal) var(--text-xs) / var(--text-xs--line-height) var(--font-sans);
@@ -486,14 +462,17 @@ a.grid__link {
   justify-content: center;
   letter-spacing: 0.1em;
   padding-inline: calc(var(--gap-sm) - var(--stroke));
-  text-decoration: none;
   text-transform: uppercase;
+}
+
+a.terms__link {
+  text-decoration-line: none;
   transition-duration: var(--transition-duration-md);
   transition-property: background-color, color;
-
 
   &:hover {
     background-color: var(--color-background-default-reverse);
     color: var(--color-foreground-default-reverse);
   }
+
 }

@@ -1,6 +1,6 @@
 baseURL: https://ben.seku.co/
 locale: en-GB
-title: Extravaganza Lime
+title: Ben Sekulowicz-Barclay
 theme: Fourteen
 
 menus:
@@ -9,12 +9,6 @@ menus:
     weight: 10
   - name: Information
     weight: 20
-  - name: Subscribe
-    weight: 30
-  - name: RSS
-    parent: Subscribe
-    url: "/feed.xml"
-    weight: 10  
   - name: Get in touch
     weight: 40
   - name: Email
