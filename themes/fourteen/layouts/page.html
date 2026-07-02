@@ -4,24 +4,23 @@
   
   <article class="page">
     <header class="page__header">
-      <h1>{{ $page.Title }}</h1>
-    </header><!-- .page__header -->
-    
-    <div class="page__meta">
       <menu class="meta">
         <li class="meta__item">
           <time>{{ time.Format "02 January 2006" $page.Date }}</time>
         </li>
+        
         {{ if in (slice "notes") $page.Section }}
         <li class="meta__item">
-          Posted in <a href="/{{ $page.Section }}">{{ title $page.Section }}</a>
+          Posted in &ldquo;<a href="/{{ $page.Section }}">{{ title $page.Section }}</a>&rdquo;
         </li>
         {{ end }}
       </menu><!-- .meta -->
-    </div><!-- .page__meta -->
+    </header><!-- .page__header -->
     
     {{ with $page.Content }}
     <div class="page__main">
+      <h1 class="page__title">{{ $page.Title }}</h1>
+      
       <div class="copy">
         {{ . }}
       </div><!-- .copy -->

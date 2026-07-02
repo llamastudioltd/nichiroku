@@ -2,9 +2,15 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <ol class="grid__main">
-    {{ range $page.Pages.ByDate.Reverse }}
-    {{ partial "grid__item.html" . }}
-    {{ end }}
-  </ol><!-- .grid__main -->
+  <div class="grid">  
+    <header class="grid__header">
+      <h1>Tagged with &ldquo;{{ $page.Title }}&rdquo;</h1>
+    </header><!-- .grid__header -->
+    
+    <ol class="grid__main">
+      {{ range $page.Pages.ByDate.Reverse }}
+      {{ partial "grid__item.html" . }}
+      {{ end }}
+    </ol><!-- .grid__main -->
+  </div><!-- .grid -->
 {{ end }}

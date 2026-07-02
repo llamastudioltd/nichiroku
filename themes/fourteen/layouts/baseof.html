@@ -63,6 +63,7 @@
         
         <menu class="menu">
           {{ range $site.Menus.footer }}
+          {{ if .HasChildren }}
           <li class="menu__item">
             <h1 class="menu__title">{{ .Name }}</h1>
             
@@ -72,6 +73,7 @@
               {{ end }}
             </menu><!-- .menu__list -->
           </li><!-- .menu__item -->
+          {{ end }}
           {{ end }}
         </menu><!-- .menu -->
         
