@@ -7,32 +7,8 @@ menus:
   footer:
   - name: Content
     weight: 10
-  - name: Notes
-    parent: Content
-    url: "/notes"
-    weight: 10
-  - name: Images
-    parent: Content
-    url: "/images"
-    weight: 20
-  - name: Places
-    parent: Content
-    url: "/places"
-    weight: 30
   - name: Information
     weight: 20
-  - name: About
-    parent: Information
-    url: "/about"
-    weight: 10  
-  - name: Colophon
-    parent: Information
-    url: "/colophon"
-    weight: 20  
-  - name: Now
-    parent: Information
-    url: "/now"
-    weight: 30  
   - name: Subscribe
     weight: 30
   - name: RSS

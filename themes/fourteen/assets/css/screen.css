@@ -79,6 +79,7 @@
   --gap-sm: 0.75rem;
   --gap-md: 1.5rem;
   --gap-lg: 3rem;
+  --gap-xl: 6rem;
 
   --scale: var(--scale-major-second);
   --stroke: 1px;
@@ -150,6 +151,10 @@ ul {
   text-wrap: pretty;
 }
 
+li {
+  list-style: none;
+}
+
 /*
 * SITE
 * 
@@ -157,11 +162,10 @@ ul {
 */
 
 .site {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: var(--gap-md);
-  justify-content: flex-start;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
   min-height: calc(100vh - (var(--gap-md) * 2));
   padding: var(--gap-md);
 
@@ -178,40 +182,17 @@ ul {
   padding-bottom: calc(var(--gap-md) - var(--stroke));
 }
 
+.site__main {
+  &:has(.page) {
+    padding-bottom: calc(var(--gap-xl) - var(--stroke));
+  }
+}
+
 .site__main,
 .site__footer {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-lg);
-  justify-content: flex-start;
-}
-
-.site__main {
-  flex-grow: 1;
-}
-
-.site__footer {
-  flex-grow: 0;
-}
-
-/*
-* LOGO
-* 
-* 
-*/
-
-.logo {
-  align-items: center;
-  display: flex;
-  height: 1.5rem;
-  justify-content: center;
-  width: 1.5rem;
-
-  svg {
-    height: 1rem;
-    width: 1rem;
-  }
+  display: grid;
+  gap: var(--gap-lg) var(--gap-md);
+  grid-template-columns: 1fr;
 }
 
 /*
@@ -220,7 +201,7 @@ ul {
  * 
  */
 
-.grid {
+.grid__main {
   display: grid;
   gap: var(--gap-xs);
   grid-template-columns: repeat(12, 1fr);
@@ -273,6 +254,43 @@ a.grid__link {
 
 .grid__subtitle {
   color: var(--color-foreground-default-reverse-weak);
+}
+
+/*
+ * PAGE
+ * 
+ * 
+ */
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto var(--gap-lg) auto var(--gap-md) auto;
+
+  &:has(.page__footer) {
+    grid-template-rows: auto var(--gap-lg) auto var(--gap-md) auto var(--gap-lg) auto;
+  }
+}
+
+.page__header {
+  grid-row: 3/4;
+
+  h1 {
+    font: normal var(--font-medium) var(--text-3xl) / var(--text-3xl--line-height) var(--font-sans);
+    text-wrap: balance;
+  }
+}
+
+.page__main {
+  grid-row: 5/6;
+}
+
+.page__meta {
+  grid-row: 1/2;
+}
+
+.page__footer {
+  grid-row: 7/8;
 }
 
 /*
@@ -330,7 +348,7 @@ a.grid__link {
   h4,
   h5,
   h6 {
-    font: normal var(--font-semibold) var(--text-xl) / var(--text-xl--line-height) var(--font-sans);
+    font: normal var(--font-medium) var(--text-xl) / var(--text-xl--line-height) var(--font-sans);
     margin-block-start: var(--gap-sm);
     text-wrap: balance;
   }
@@ -352,6 +370,25 @@ a.grid__link {
     @media (width>=768px) {
       font: normal var(--font-normal) var(--text-sm) / var(--text-sm--line-height) var(--font-sans);
     }
+  }
+}
+
+/*
+ * LOGO
+ * 
+ * 
+ */
+
+.logo {
+  align-items: center;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  width: 1.5rem;
+
+  svg {
+    height: 1rem;
+    width: 1rem;
   }
 }
 
@@ -397,8 +434,6 @@ a.grid__link {
 }
 
 .menu__list {
-  list-style: none;
-
   a {
     text-decoration-line: none;
   }
@@ -427,34 +462,6 @@ a.grid__link {
 }
 
 /*
- * PAGE
- * 
- * 
- */
-
-.page {
-  padding-block-end: calc(var(--gap-md) * 3);
-}
-
-.page__header {
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-lg);
-  justify-content: flex-start;
-  margin-block-end: var(--gap-md);
-
-  h1 {
-    font: normal var(--font-semibold) var(--text-3xl) / var(--text-3xl--line-height) var(--font-sans);
-    text-wrap: balance;
-  }
-}
-
-.page__footer {
-  margin-block-start: var(--gap-lg);
-}
-
-/*
  * TERMS
  * 
  * 
@@ -478,10 +485,13 @@ a.grid__link {
   border: solid var(--stroke) var(--color-stroke-default);
   border-radius: 999px;
   color: var(--color-foreground-default);
-  display: block;
+  align-items: center;
+  display: flex;
   font: normal var(--font-normal) var(--text-xs) / var(--text-xs--line-height) var(--font-sans);
+  height: calc(var(--gap-md) - var(--stroke));
+  justify-content: center;
   letter-spacing: 0.1em;
-  padding: calc(0.25rem - var(--stroke)) calc(var(--gap-sm) - var(--stroke));
+  padding-inline: calc(var(--gap-sm) - var(--stroke));
   text-decoration: none;
   text-transform: uppercase;
   transition-duration: var(--transition-duration-md);
