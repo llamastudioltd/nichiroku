@@ -26,7 +26,7 @@
     
     <link rel="canonical" href="{{ $page.Permalink }}">
     
-    {{ with resources.Get "css/screen.css" | css.Build }}
+    {{ with resources.Get "css/screen.css" | css.Build (dict "minify" true)}}
       {{ if hugo.IsDevelopment }}
       <link rel="stylesheet" href="{{ .RelPermalink }}">
       {{ else }}

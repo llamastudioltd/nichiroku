@@ -26,10 +26,10 @@
   --color-background-default-reverse: color-mix(in srgb, var(--color-neutral-900) 90%, var(--color-red-100));
 
   --color-foreground-default: color-mix(in srgb, var(--color-neutral-900) 90%, transparent);
-  --color-foreground-default-weak: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+  --color-foreground-default-weak: color-mix(in srgb, var(--color-neutral-900) 60%, transparent);
 
   --color-foreground-default-reverse: var(--color-red-100);
-  --color-foreground-default-reverse-weak: color-mix(in srgb, var(--color-red-100) 50%, transparent);
+  --color-foreground-default-reverse-weak: color-mix(in srgb, var(--color-red-100) 60%, transparent);
 
   --color-stroke-default: color-mix(in srgb, var(--color-neutral-900) 90%, var(--color-red-100));
 
@@ -327,6 +327,7 @@ a.grid__link {
     text-wrap: balance;
   }
 
+  figcaption,
   p {
     text-align: justify;
   }
