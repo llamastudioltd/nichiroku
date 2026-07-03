@@ -3,14 +3,14 @@
   {{ $page := . }}
   
   <article class="page">
-    {{ if in (slice "posts") $page.Section }}
+    {{ if in (slice "posts" "notes") $page.Section }}
     <header class="page__header">
       <menu class="meta">
         <li class="meta__item">
-          <time>{{ time.Format "02 January 2006" $page.Date }}</time>
+          Posted in &ldquo;<a href="/{{ $page.Section }}">{{ title $page.Section }}</a>&rdquo;
         </li>
         <li class="meta__item">
-          Posted in &ldquo;<a href="/{{ $page.Section }}">{{ title $page.Section }}</a>&rdquo;
+          <time>{{ time.Format "02 January 2006" $page.Date }}</time>
         </li>
       </menu><!-- .meta -->
     </header><!-- .page__header -->
@@ -26,7 +26,7 @@
     </div><!-- .page__main -->
     {{ end }}
     
-    {{ if in (slice "posts") $page.Section }}
+    {{ if in (slice "posts" "notes") $page.Section }}
     <footer class="page__footer">
       {{ with $page.GetTerms "tags" }}
       <menu class="terms">

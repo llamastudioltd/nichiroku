@@ -4,7 +4,7 @@
   
   <div class="grid">
     <ol class="grid__main">
-      {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "posts") }}
+      {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "posts" "notes") }}
       {{ partial "grid__item.html" . }}
       {{ end }}
     </ol><!-- .grid__main -->
