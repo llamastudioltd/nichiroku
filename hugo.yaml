@@ -46,4 +46,4 @@ menus:
     weight: 40
 permalinks:
   page: /:slug/
-theme: Fourteen
+theme: fourteen
