@@ -44,6 +44,10 @@
     <link href="/site.webmanifest" rel="manifest">
     
     <link rel="alternate" type="application/rss+xml" title="Site Name" href="/index.xml">
+    
+    {{ if hugo.IsProduction }}
+    <script data-website-id="b5f9d819-7132-4e01-9115-83061d126640" defer src="https://cloud.umami.is/script.js"></script>
+    {{ end }}
   </head>
   <body>
     <div class="site">
