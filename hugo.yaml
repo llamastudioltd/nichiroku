@@ -1,7 +1,6 @@
 baseURL: https://ben.seku.co/
 locale: en-GB
 title: Ben Sekulowicz-Barclay
-theme: Fourteen
 
 menus:
   footer:
