@@ -1,6 +1,7 @@
 @import "./vendor/resets.css";
+
 @import "./vendor/animations.css";
-@import "./vendor/variables.css";
+@import "./vendor/colors.css";
 
 @font-face {
   font-display: swap;
@@ -19,19 +20,22 @@
 }
 
 :root {
-  --color-background-default-strong: color-mix(in srgb, var(--color-neutral-900) 5%, var(--color-red-100));
   --color-background-default: var(--color-red-100);
+  --color-foreground-default: var(--color-neutral-950);
 
-  --color-background-default-reverse-strong: var(--color-neutral-900);
-  --color-background-default-reverse: color-mix(in srgb, var(--color-neutral-900) 90%, var(--color-red-100));
+  --color-background-neutral-strong: color-mix(in srgb, var(--color-foreground-default) 5%, var(--color-background-default));
+  --color-background-neutral: var(--color-red-100);
 
-  --color-foreground-default: color-mix(in srgb, var(--color-neutral-900) 90%, transparent);
-  --color-foreground-default-weak: color-mix(in srgb, var(--color-neutral-900) 60%, transparent);
+  --color-background-neutral-reverse-strong: var(--color-foreground-default);
+  --color-background-neutral-reverse: color-mix(in srgb, var(--color-foreground-default) 90%, var(--color-background-default));
 
-  --color-foreground-default-reverse: var(--color-red-100);
-  --color-foreground-default-reverse-weak: color-mix(in srgb, var(--color-red-100) 60%, transparent);
+  --color-foreground-neutral: var(--color-foreground-default);
+  --color-foreground-neutral-weak: color-mix(in srgb, var(--color-foreground-default) 60%, var(--color-background-default));
 
-  --color-stroke-default: color-mix(in srgb, var(--color-neutral-900) 90%, var(--color-red-100));
+  --color-foreground-neutral-reverse: var(--color-background-default);
+  --color-foreground-neutral-reverse-weak: color-mix(in srgb, var(--color-background-default) 60%, var(--color-foreground-default));
+
+  --color-stroke-neutral: var(--color-foreground-default);
 
   --font-sans: "Inclusive Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans--feature-settings: "ss01" on;
@@ -84,7 +88,7 @@
 }
 
 html {
-  font-size: clamp(15px, 0.8715rem + 0.2641vw, 18px);
+  font-size: clamp(16px, 0.75rem + 0.3906vw, 18px);
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -158,7 +162,7 @@ li {
 .site__header,
 .site__main,
 .site__footer {
-  border-bottom: solid var(--stroke) var(--color-stroke-default);
+  border-bottom: solid var(--stroke) var(--color-stroke-neutral);
   padding-bottom: calc(var(--gap-md) - var(--stroke));
 }
 
@@ -217,8 +221,8 @@ li {
 
 .grid__link {
   align-items: stretch;
-  background-color: var(--color-background-default-reverse);
-  color: var(--color-foreground-default-reverse);
+  background-color: var(--color-background-neutral-reverse);
+  color: var(--color-foreground-neutral-reverse);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -233,13 +237,13 @@ a.grid__link {
   transition-property: background-color, color;
 
   &:hover {
-    background-color: var(--color-background-default-reverse-strong);
-    color: var(--color-foreground-default-reverse);
+    background-color: var(--color-background-neutral-reverse-strong);
+    color: var(--color-foreground-neutral-reverse);
   }
 }
 
 .grid__subtitle {
-  color: var(--color-foreground-default-reverse-weak);
+  color: var(--color-foreground-neutral-reverse-weak);
 }
 
 /*
@@ -327,11 +331,6 @@ a.grid__link {
     text-wrap: balance;
   }
 
-  figcaption,
-  p {
-    text-align: justify;
-  }
-
   figure {
     display: grid;
     gap: var(--gap-sm) var(--gap-md);
@@ -340,7 +339,7 @@ a.grid__link {
   }
 
   figcaption {
-    color: var(--color-foreground-default-weak);
+    color: var(--color-foreground-neutral-weak);
   }
 }
 
@@ -398,7 +397,7 @@ a.grid__link {
 }
 
 .menu__title {
-  color: var(--color-foreground-default-weak);
+  color: var(--color-foreground-neutral-weak);
   font: normal var(--font-normal) var(--text-xs) / var(--text-xs--line-height) var(--font-sans);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -452,7 +451,7 @@ a.grid__link {
 }
 
 .terms__link {
-  border: solid var(--stroke) var(--color-stroke-default);
+  border: solid var(--stroke) var(--color-stroke-neutral);
   border-radius: 999px;
   align-items: center;
   display: flex;
@@ -470,8 +469,8 @@ a.terms__link {
   transition-property: background-color, color;
 
   &:hover {
-    background-color: var(--color-background-default-reverse);
-    color: var(--color-foreground-default-reverse);
+    background-color: var(--color-background-neutral-reverse);
+    color: var(--color-foreground-neutral-reverse);
   }
 
 }
