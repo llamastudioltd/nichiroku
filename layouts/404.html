@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ $site := $.Site }}
+  {{ $page := . }}
+  
+  <div class="temp">
+    <header class="temp__header">
+      {{ partial "logo.html" $page }}
+    </header><!-- .temp__header -->
+    
+    <div class="temp__main">
+      <p><a href="/">That's a 404!</a></p>
+    </div><!-- .temp__main -->
+  </div>
+{{ end }}

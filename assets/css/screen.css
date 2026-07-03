@@ -272,6 +272,26 @@ a.grid__link {
 }
 
 /*
+ * TEMP
+ *
+ *
+ */
+
+.temp {
+  background-color: var(--color-background-default);
+  color: var(--color-foreground-default);
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  justify-content: center;
+  padding: var(--gap-md);
+  position: fixed;
+  inset: 0;
+}
+
+/*
  * COPY
  * 
  * 

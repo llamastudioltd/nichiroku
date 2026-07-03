@@ -2,9 +2,11 @@
   {{ $site := $.Site }}
   {{ $page := . }}
   
-  <ol class="grid__main">
-    {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "notes") }}
-    {{ partial "grid__item.html" . }}
-    {{ end }}
-  </ol><!-- .grid__main -->
+  <div class="grid">
+    <ol class="grid__main">
+      {{ range where site.RegularPages.ByDate.Reverse "Section" "in" (slice "notes") }}
+      {{ partial "grid__item.html" . }}
+      {{ end }}
+    </ol><!-- .grid__main -->
+  </div><!-- .grid -->
 {{ end }}
