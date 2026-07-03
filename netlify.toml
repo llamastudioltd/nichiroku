@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "https://beseku.com/*"
+  to = "https://ben.seku.co/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.beseku.com/*"
+  to = "https://ben.seku.co/:splat"
+  status = 301
+  force = true
