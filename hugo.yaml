@@ -2,6 +2,10 @@ baseURL: https://ben.seku.co/
 locale: en-GB
 title: Ben Sekulowicz-Barclay
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 menus:
   footer:
   - name: Content
@@ -40,11 +44,6 @@ menus:
     parent: Elsewhere
     url: "https://letterboxd.com/beseku/"
     weight: 40
-
 permalinks:
   page: /:slug/
-
-markup:
-  goldmark:
-    renderer:
-      unsafe: true
+theme: Fourteen
