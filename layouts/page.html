@@ -3,19 +3,18 @@
   {{ $page := . }}
   
   <article class="page">
+    {{ if in (slice "posts") $page.Section }}
     <header class="page__header">
       <menu class="meta">
         <li class="meta__item">
           <time>{{ time.Format "02 January 2006" $page.Date }}</time>
         </li>
-        
-        {{ if in (slice "notes") $page.Section }}
         <li class="meta__item">
           Posted in &ldquo;<a href="/{{ $page.Section }}">{{ title $page.Section }}</a>&rdquo;
         </li>
-        {{ end }}
       </menu><!-- .meta -->
     </header><!-- .page__header -->
+    {{ end }}
     
     {{ with $page.Content }}
     <div class="page__main">
@@ -27,6 +26,7 @@
     </div><!-- .page__main -->
     {{ end }}
     
+    {{ if in (slice "posts") $page.Section }}
     {{ with $page.GetTerms "tags" }}
     <footer class="page__footer">
       <menu class="terms">
@@ -34,7 +34,31 @@
         <li><a class="terms__link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li><!-- .terms__item -->
         {{ end }}
       </menu><!-- .terms -->
+      
+      <menu class="pages">
+        {{ if $page.NextInSection }}
+        {{ with $page.NextInSection }}
+        <li class="pages__item">
+          <a class="pages__link" href="{{ .RelPermalink }}">&larr; Newer</a>
+        </li>
+        {{ end }}
+        {{ else }}
+        <li class="pages__item">&larr; Newer</li>
+        {{ end }}
+        
+        
+        {{ if $page.PrevInSection }}
+        {{ with $page.PrevInSection }}
+        <li class="pages__item">
+          <a class="pages__link" href="{{ .RelPermalink }}">Older &rarr;</a>
+        </li>
+        {{ end }}
+        {{ else }}
+        <li class="pages__item">Older &rarr;</li>
+        {{ end }}
+      </menu><!-- .pages -->
     </footer><!-- .page__footer -->
+    {{ end }}
     {{ end }}
   </article><!-- .page -->
 {{ end }}
