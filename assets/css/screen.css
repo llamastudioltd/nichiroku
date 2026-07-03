@@ -112,6 +112,13 @@ a {
   }
 }
 
+abbr {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.125em;
+  cursor: help;
+}
+
 b,
 strong {
   font-weight: var(--font-bold);
@@ -119,7 +126,7 @@ strong {
 
 em,
 i {
-  font-style: inherit;
+  font-style: italic;
 }
 
 img,
@@ -234,6 +241,10 @@ a.grid__link {
     background-color: var(--color-background-neutral-reverse-strong);
     color: var(--color-foreground-neutral-reverse);
   }
+}
+
+.grid__title {
+  color: var(--color-foreground-neutral-reverse);
 }
 
 .grid__subtitle {
@@ -361,6 +372,11 @@ a.grid__link {
     font: normal var(--font-medium) var(--text-lg) / var(--text-lg--line-height) var(--font-sans);
     margin-block-start: var(--gap-sm);
     text-wrap: balance;
+  }
+
+  p,
+  figcpation {
+    text-align: justify;
   }
 
   figure {

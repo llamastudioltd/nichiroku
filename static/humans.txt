@@ -1,0 +1,10 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Ben Sekulowicz-Barclay -- Everything -- @beseku@mastodon.design
+  
+# TECHNOLOGY COLOPHON
+
+  CSS3, HTML5, Hugo, Netlify

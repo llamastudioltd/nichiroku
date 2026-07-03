@@ -27,13 +27,14 @@
     {{ end }}
     
     {{ if in (slice "posts") $page.Section }}
-    {{ with $page.GetTerms "tags" }}
     <footer class="page__footer">
+      {{ with $page.GetTerms "tags" }}
       <menu class="terms">
         {{ range . }}
         <li><a class="terms__link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li><!-- .terms__item -->
         {{ end }}
       </menu><!-- .terms -->
+      {{ end }}
       
       <menu class="pages">
         {{ if $page.NextInSection }}
@@ -58,7 +59,6 @@
         {{ end }}
       </menu><!-- .pages -->
     </footer><!-- .page__footer -->
-    {{ end }}
     {{ end }}
   </article><!-- .page -->
 {{ end }}

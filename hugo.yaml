@@ -40,4 +40,11 @@ menus:
     parent: Elsewhere
     url: "https://letterboxd.com/beseku/"
     weight: 40
-  
+
+permalinks:
+  page: /:slug/
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
