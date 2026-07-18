@@ -385,11 +385,6 @@ a.grid__link {
   .copy>* {
     grid-column: 1 / 10
   }
-
-  .copy figcaption,
-  .copy p {
-    text-align: justify;
-  }
 }
 
 @media (width>=1280px) {
